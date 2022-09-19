@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using Vigicom.ViewModels;
+
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -15,6 +17,7 @@ namespace Vigicom.Pages
         public CreateAccountPage()
         {
             InitializeComponent();
+            BindingContext = new CreateAccountViewModel(Navigation);
         }
     }
 }

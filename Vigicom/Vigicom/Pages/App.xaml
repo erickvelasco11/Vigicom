@@ -3,6 +3,21 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Vigicom.Pages.App">
     <Application.Resources>
-
+        <ResourceDictionary>
+            <Color x:Key="primaryColor">#003884</Color>
+            <Color x:Key="mWhite">#FFFFFF</Color>
+            <Style TargetType="Button">
+                <Setter Property="BackgroundColor"
+                        Value="{ StaticResource primaryColor }"></Setter>
+                <Setter Property="TextColor"
+                        Value="{ StaticResource mWhite}" />
+            </Style>
+            <Style TargetType="NavigationPage">
+                <Setter Property="BarBackgroundColor"
+                        Value="{ StaticResource primaryColor}" />
+                <Setter Property="BarTextColor"
+                        Value="{ StaticResource mWhite}" />
+            </Style>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>
