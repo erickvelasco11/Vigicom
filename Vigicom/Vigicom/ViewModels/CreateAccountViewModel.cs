@@ -1,13 +1,19 @@
-﻿using System;
+﻿using MvvmHelpers;
+using MvvmHelpers.Commands;
+
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Windows.Input;
 
-using Xamarin.Forms;
+using Vigicom.Models;
+using Vigicom.Pages;
+using Vigicom.Services;
 
 namespace Vigicom.ViewModels
 {
-    public class CreateAccountViewModel : BaseViewModel
+    public class CreateAccountViewModel : MyBaseViewModel
     {
 
         public CreateAccountViewModel()
@@ -16,7 +22,7 @@ namespace Vigicom.ViewModels
             BtnSave = new Command(OnBtnSaveClick);
         }
 
-        public CreateAccountViewModel(INavigation navigation)
+        public CreateAccountViewModel(Xamarin.Forms.INavigation navigation)
         {
             Navigation = navigation;
             BtnClear = new Command(OnBtnClearClick);
@@ -27,33 +33,21 @@ namespace Vigicom.ViewModels
         public string Name
         {
             get => name;
-            set
-            {
-                name = value;
-                OnPropertyChanged();
-            }
+            set => SetProperty(ref name, value);
         }
 
         private string simNumber = "";
         public string SimNumber
         {
             get => simNumber;
-            set
-            {
-                simNumber = value;
-                OnPropertyChanged();
-            }
+            set => SetProperty(ref simNumber, value);
         }
 
         private string userPassword = "";
         public string UserPassword
         {
             get => userPassword;
-            set
-            {
-                userPassword = value;
-                OnPropertyChanged();
-            }
+            set => SetProperty(ref userPassword, value);
         }
 
         public ICommand BtnClear { get; }
@@ -87,7 +81,23 @@ namespace Vigicom.ViewModels
                 return;
             }
 
+            var account = new Account()
+            {
+                Name = Name,
+                SimNumber = SimNumber,
+                UserPassword = UserPassword
+            };
 
+            if (await AccountService.Instance.AddAccount(account) != null)
+            {
+                await DisplayAlert("Genial!", "La cuenta se ha guardado.", "Gracias");
+                await Navigation.PushAsync(new MainPage());
+                Navigation.RemovePage(Navigation.NavigationStack.First());
+            }
+            else
+            {
+                await DisplayAlert("Ups!", "No hemos podido guardar la cuenta", "Rayos");
+            }
         }
 
     }

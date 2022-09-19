@@ -1,13 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using MvvmHelpers;
+
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
 
 namespace Vigicom.ViewModels
 {
-    public class BaseViewModel : BindableObject
+    public class MyBaseViewModel : BaseViewModel
     {
         public INavigation Navigation { get; set; }
 
