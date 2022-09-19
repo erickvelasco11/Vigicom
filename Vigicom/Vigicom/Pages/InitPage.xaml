@@ -1,13 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Vigicom.MainPage"
+             x:Class="Vigicom.Pages.InitPage"
              NavigationPage.HasNavigationBar="False">
-
     <StackLayout>
-        <Image Source="ic_logo_round.png" Margin="0,96,0,16"></Image>
-        <Label Text="VIGICOM" HorizontalOptions="Center" FontSize="32"></Label>
-        <Label Text="by TECNOCOM" HorizontalOptions="Center" VerticalOptions="EndAndExpand" Margin="0,0,0,32"></Label>
+        <Image Source="ic_logo_round.png"
+               Margin="0,96,0,16"></Image>
+        <Label Text="VIGICOM"
+               HorizontalOptions="Center"
+               FontSize="32"></Label>
+        <Label Text="by TECNOCOM"
+               HorizontalOptions="Center"
+               VerticalOptions="EndAndExpand"
+               Margin="0,0,0,32"></Label>
     </StackLayout>
-
 </ContentPage>

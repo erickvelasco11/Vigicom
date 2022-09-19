@@ -3,7 +3,7 @@
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace Vigicom
+namespace Vigicom.Pages
 {
     public partial class App : Application
     {
@@ -11,7 +11,7 @@ namespace Vigicom
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new NavigationPage(new InitPage());
         }
 
         protected override void OnStart()
