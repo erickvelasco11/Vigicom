@@ -6,7 +6,9 @@ using System.Threading;
 using System.Threading.Tasks;
 
 using Vigicom.Pages;
+using Vigicom.Services;
 
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace Vigicom.ViewModels
@@ -27,7 +29,15 @@ namespace Vigicom.ViewModels
                 Thread.Sleep(2000);
             }).ContinueWith(async task =>
             {
-                await Navigation.PushAsync(new CreateAccountPage(), true);
+                if (Preferences.Get(Constants.KEY_CURRENT_ACCOUNT_ID, Guid.Empty.ToString()) != Guid.Empty.ToString())
+                {
+                    await Navigation.PushAsync(new MainPage(), true);
+                }
+                else
+                {
+                    await Navigation.PushAsync(new CreateAccountPage(), true);
+                }
+
                 Navigation.RemovePage(Navigation.NavigationStack.First());
             }, TaskScheduler.FromCurrentSynchronizationContext());
         }

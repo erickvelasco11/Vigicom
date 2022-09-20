@@ -11,6 +11,8 @@ using Vigicom.Models;
 using Vigicom.Pages;
 using Vigicom.Services;
 
+using Xamarin.Essentials;
+
 namespace Vigicom.ViewModels
 {
     public class CreateAccountViewModel : MyBaseViewModel
@@ -57,6 +59,7 @@ namespace Vigicom.ViewModels
             Name = "";
             SimNumber = "";
             UserPassword = "";
+            Title = "LOL";
         }
 
         public ICommand BtnSave { get; }
@@ -88,8 +91,10 @@ namespace Vigicom.ViewModels
                 UserPassword = UserPassword
             };
 
-            if (await AccountService.Instance.AddAccount(account) != null)
+            account = await AccountService.Instance.AddAccount(account);
+            if (account != null)
             {
+                Preferences.Set(Constants.KEY_CURRENT_ACCOUNT_ID, account.Id.ToString());
                 await DisplayAlert("Genial!", "La cuenta se ha guardado.", "Gracias");
                 await Navigation.PushAsync(new MainPage());
                 Navigation.RemovePage(Navigation.NavigationStack.First());

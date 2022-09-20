@@ -10,31 +10,32 @@
     </ContentPage.BindingContext>
     <ContentPage.Content>
         <StackLayout Margin="32,32,32,0">
-            <Image Source="ic_logo_round.png"></Image>
+            <Image Source="ic_logo_round.png" />
             <StackLayout Orientation="Vertical"
                          Margin="64">
                 <Entry Placeholder="Nombre"
                        Keyboard="Text"
                        Margin="0,0,0,16"
-                       Text="{Binding Name}"></Entry>
+                       Text="{Binding Name}" />
                 <Entry Placeholder="Número SIM"
                        MaxLength="10"
                        Keyboard="Numeric"
                        Margin="0,0,0,16"
-                       Text="{Binding SimNumber}"></Entry>
+                       Text="{Binding SimNumber}" />
                 <Entry Placeholder="Clave Usuario"
                        IsPassword="True"
                        MaxLength="4"
                        Keyboard="Numeric"
                        Margin="0,0,0,16"
-                       Text="{Binding UserPassword}"></Entry>
+                       Text="{Binding UserPassword}" />
                 <StackLayout Orientation="Horizontal"
                              HorizontalOptions="Fill">
                     <Button Text="Deshacer"
-                            HorizontalOptions="FillAndExpand" Command="{Binding BtnClear}"></Button>
+                            HorizontalOptions="FillAndExpand"
+                            Command="{Binding BtnClear}" />
                     <Button Text="Guardar"
                             HorizontalOptions="FillAndExpand"
-                            Command="{Binding BtnSave}"></Button>
+                            Command="{Binding BtnSave}" />
                 </StackLayout>
             </StackLayout>
         </StackLayout>
