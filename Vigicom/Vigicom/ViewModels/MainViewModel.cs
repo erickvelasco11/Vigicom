@@ -37,7 +37,7 @@ namespace Vigicom.ViewModels
         private async void Init()
         {
             var currentId = Guid.Parse(Preferences.Get(Constants.KEY_CURRENT_ACCOUNT_ID, Guid.Empty.ToString()));
-            var currentAccount = await AccountService.Instance.GetAccount(currentId);
+            var currentAccount = await AccountService.Instance.Get(currentId);
             Title = currentAccount.Name;
         }
 

@@ -32,26 +32,32 @@ namespace Vigicom.Services
             await db.CreateTableAsync<Account>();
         }
 
-        public async Task<Account> AddAccount(Account account)
+        public async Task<List<Account>> GetAll()
+        {
+            await Init();
+            return await db.Table<Account>().ToListAsync();
+        }
+
+        public async Task<Account> Add(Account account)
         {
             await Init();
             account.Id = Guid.NewGuid();
             return await db.InsertAsync(account) > 0 ? account : null;
         }
 
-        public async Task<Account> GetAccount(Guid id)
+        public async Task<Account> Get(Guid id)
         {
             await Init();
             return await db.GetAsync<Account>(id);
         }
 
-        public async Task<bool> DeleteAccount(Guid id)
+        public async Task<bool> Delete(Guid id)
         {
             await Init();
             return await db.DeleteAsync<Account>(id) > 0;
         }
 
-        public async Task<bool> EditAccount(Account account)
+        public async Task<bool> Edit(Account account)
         {
             await Init();
             return await db.UpdateAsync(account) > 0;

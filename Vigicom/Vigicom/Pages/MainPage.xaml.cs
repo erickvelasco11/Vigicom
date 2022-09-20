@@ -12,6 +12,11 @@ namespace Vigicom.Pages
         public MainPage()
         {
             InitializeComponent();
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
             BindingContext = new MainViewModel(Navigation);
         }
     }

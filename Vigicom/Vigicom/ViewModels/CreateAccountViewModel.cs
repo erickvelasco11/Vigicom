@@ -17,11 +17,13 @@ namespace Vigicom.ViewModels
 {
     public class CreateAccountViewModel : MyBaseViewModel
     {
+        private Account CurrentAccount { get; set; }
+
+        public ICommand BtnClearCommand { get; }
+        public ICommand BtnSaveCommand { get; }
 
         public CreateAccountViewModel()
         {
-            BtnClearCommand = new Command(OnBtnClearClick);
-            BtnSaveCommand = new Command(OnBtnSaveClick);
         }
 
         public CreateAccountViewModel(Xamarin.Forms.INavigation navigation)
@@ -29,6 +31,17 @@ namespace Vigicom.ViewModels
             Navigation = navigation;
             BtnClearCommand = new Command(OnBtnClearClick);
             BtnSaveCommand = new Command(OnBtnSaveClick);
+        }
+
+        public CreateAccountViewModel(Xamarin.Forms.INavigation navigation, Account account)
+        {
+            Navigation = navigation;
+            BtnClearCommand = new Command(OnBtnClearClick);
+            BtnSaveCommand = new Command(OnBtnSaveClick);
+            CurrentAccount = account;
+            Name = account.Name;
+            SimNumber = account.SimNumber;
+            UserPassword = account.UserPassword;
         }
 
         private string name = "";
@@ -52,8 +65,6 @@ namespace Vigicom.ViewModels
             set => SetProperty(ref userPassword, value);
         }
 
-        public ICommand BtnClearCommand { get; }
-
         private void OnBtnClearClick()
         {
             Name = "";
@@ -61,8 +72,6 @@ namespace Vigicom.ViewModels
             UserPassword = "";
             Title = "LOL";
         }
-
-        public ICommand BtnSaveCommand { get; }
 
         private async void OnBtnSaveClick()
         {
@@ -84,24 +93,54 @@ namespace Vigicom.ViewModels
                 return;
             }
 
-            var account = new Account()
+            if (CurrentAccount == null)
             {
-                Name = Name,
-                SimNumber = SimNumber,
-                UserPassword = UserPassword
-            };
+                var account = new Account()
+                {
+                    Name = Name,
+                    SimNumber = SimNumber,
+                    UserPassword = UserPassword
+                };
 
-            account = await AccountService.Instance.AddAccount(account);
-            if (account != null)
-            {
-                Preferences.Set(Constants.KEY_CURRENT_ACCOUNT_ID, account.Id.ToString());
-                await DisplayAlert("Genial!", "La cuenta se ha guardado.", "Gracias");
-                await Navigation.PushAsync(new MainPage());
-                Navigation.RemovePage(Navigation.NavigationStack.First());
+                account = await AccountService.Instance.Add(account);
+                if (account != null)
+                {
+                    Preferences.Set(Constants.KEY_CURRENT_ACCOUNT_ID, account.Id.ToString());
+                    await DisplayAlert("Genial!", "La cuenta se ha guardado.", "Entendido");
+                    if (Navigation.NavigationStack.Count == 2)
+                    {
+                        await Navigation.PushAsync(new MainPage());
+                        Navigation.RemovePage(Navigation.NavigationStack.First());
+                    }
+                    else
+                    {
+                        await Navigation.PopToRootAsync();
+                    }
+                }
+                else
+                {
+                    await DisplayAlert("Ups!", "No hemos podido guardar la cuenta", "Entendido");
+                }
             }
             else
             {
-                await DisplayAlert("Ups!", "No hemos podido guardar la cuenta", "Rayos");
+                var account = new Account()
+                {
+                    Id = CurrentAccount.Id,
+                    Name = Name,
+                    SimNumber = SimNumber,
+                    UserPassword = UserPassword
+                };
+
+                if (await AccountService.Instance.Edit(account))
+                {
+                    await DisplayAlert("Genial!", "La cuenta se ha modificado correctamente.", "Entendido");
+                    await Navigation.PopAsync();
+                }
+                else
+                {
+                    await DisplayAlert("Ups!", "No hemos podido modificar la cuenta", "Entendido");
+                }
             }
         }
 
