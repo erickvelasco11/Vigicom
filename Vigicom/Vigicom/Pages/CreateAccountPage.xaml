@@ -32,10 +32,10 @@
                              HorizontalOptions="Fill">
                     <Button Text="Deshacer"
                             HorizontalOptions="FillAndExpand"
-                            Command="{Binding BtnClear}" />
+                            Command="{Binding BtnClearCommand}" />
                     <Button Text="Guardar"
                             HorizontalOptions="FillAndExpand"
-                            Command="{Binding BtnSave}" />
+                            Command="{Binding BtnSaveCommand}" />
                 </StackLayout>
             </StackLayout>
         </StackLayout>

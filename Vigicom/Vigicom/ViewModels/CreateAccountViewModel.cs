@@ -20,15 +20,15 @@ namespace Vigicom.ViewModels
 
         public CreateAccountViewModel()
         {
-            BtnClear = new Command(OnBtnClearClick);
-            BtnSave = new Command(OnBtnSaveClick);
+            BtnClearCommand = new Command(OnBtnClearClick);
+            BtnSaveCommand = new Command(OnBtnSaveClick);
         }
 
         public CreateAccountViewModel(Xamarin.Forms.INavigation navigation)
         {
             Navigation = navigation;
-            BtnClear = new Command(OnBtnClearClick);
-            BtnSave = new Command(OnBtnSaveClick);
+            BtnClearCommand = new Command(OnBtnClearClick);
+            BtnSaveCommand = new Command(OnBtnSaveClick);
         }
 
         private string name = "";
@@ -52,7 +52,7 @@ namespace Vigicom.ViewModels
             set => SetProperty(ref userPassword, value);
         }
 
-        public ICommand BtnClear { get; }
+        public ICommand BtnClearCommand { get; }
 
         private void OnBtnClearClick()
         {
@@ -62,7 +62,7 @@ namespace Vigicom.ViewModels
             Title = "LOL";
         }
 
-        public ICommand BtnSave { get; }
+        public ICommand BtnSaveCommand { get; }
 
         private async void OnBtnSaveClick()
         {

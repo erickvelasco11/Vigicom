@@ -2,16 +2,34 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             xmlns:ViewModels="clr-namespace:Vigicom.ViewModels"
              x:Class="Vigicom.Pages.MainPage"
              Title="{Binding Title}">
+    <ContentPage.BindingContext>
+        <ViewModels:MainViewModel />
+    </ContentPage.BindingContext>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Cuentas"
+                     Priority="0"
+                     Order="Secondary"
+                     Command="{Binding MenAccountsCommand}" />
+        <ToolbarItem Text="Programación"
+                     Priority="1"
+                     Order="Secondary"
+                     Command="{Binding MenProgramationCommand}" />
+        <ToolbarItem Text="Historial"
+                     Priority="1"
+                     Order="Secondary"
+                     Command="{Binding MenHistoricalCommand}" />
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout VerticalOptions="Fill"
                      Padding="32,64">
             <ImageButton Source="ic_logo_round.png"
                          VerticalOptions="FillAndExpand"
                          BackgroundColor="Transparent"
-                         xct:TouchEffect.NativeAnimationBorderless="True"
-                         xct:TouchEffect.NativeAnimationRadius="100" />
+                         xct:TouchEffect.NativeAnimation="True"
+                         Command="{Binding BtnSosCommand}" />
             <StackLayout Orientation="Horizontal"
                          HorizontalOptions="Fill">
                 <Button ImageSource="ic_fire.png"
@@ -22,7 +40,8 @@
                         FontSize="24"
                         BorderWidth="3"
                         TextColor="Black"
-                        xct:TouchEffect.NativeAnimation="True" />
+                        xct:TouchEffect.NativeAnimation="True"
+                        Command="{Binding BtnFireCommand}" />
                 <Button ImageSource="ic_hospital.png"
                         Text="Médica"
                         HorizontalOptions="FillAndExpand"
@@ -31,7 +50,8 @@
                         BorderWidth="3"
                         TextColor="Black"
                         FontSize="24"
-                        xct:TouchEffect.NativeAnimation="True" />
+                        xct:TouchEffect.NativeAnimation="True"
+                        Command="{Binding BtnHospitalCommand}" />
             </StackLayout>
             <Button ImageSource="ic_assistance.png"
                     Text="Asistencia"
@@ -41,7 +61,8 @@
                     TextColor="Black"
                     FontSize="24"
                     Margin="0,16,0,0"
-                    xct:TouchEffect.NativeAnimation="True" />
+                    xct:TouchEffect.NativeAnimation="True"
+                    Command="{Binding BtnAssistanceCommand}" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
