@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Windows.Input;
 
+using Vigicom.Models;
 using Vigicom.Pages;
 using Vigicom.Services;
 
@@ -32,12 +30,18 @@ namespace Vigicom.ViewModels
             Init();
 
             MenAccountsCommand = new Command(MenAccountsClick);
+            MenProgramationCommand = new Command(MenProgramationClick);
+            MenHistoricalCommand = new Command(MenHistoricalClick);
+            BtnSosCommand = new Command(BtnSosClick);
+            BtnFireCommand = new Command(BtnFireClick);
+            BtnHospitalCommand = new Command(BtnHospitalClick);
+            BtnAssistanceCommand = new Command(BtnAssistanceClick);
         }
 
         private async void Init()
         {
             var currentId = Guid.Parse(Preferences.Get(Constants.KEY_CURRENT_ACCOUNT_ID, Guid.Empty.ToString()));
-            var currentAccount = await AccountService.Instance.Get(currentId);
+            var currentAccount = await DbService.Instance.Get<Account>(currentId);
             Title = currentAccount.Name;
         }
 
@@ -52,6 +56,7 @@ namespace Vigicom.ViewModels
 
         private async void MenHistoricalClick()
         {
+            await Navigation.PushAsync(new HistoricalPage());
         }
 
         private async void BtnSosClick()

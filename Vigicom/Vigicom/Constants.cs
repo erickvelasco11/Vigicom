@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Vigicom
+﻿namespace Vigicom
 {
     public class Constants
     {

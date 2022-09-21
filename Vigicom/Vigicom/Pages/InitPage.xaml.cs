@@ -1,7 +1,4 @@
-﻿using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-
+﻿
 using Vigicom.ViewModels;
 
 using Xamarin.Forms;

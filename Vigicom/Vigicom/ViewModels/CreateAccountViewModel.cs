@@ -1,10 +1,6 @@
-﻿using MvvmHelpers;
-using MvvmHelpers.Commands;
+﻿using MvvmHelpers.Commands;
 
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Windows.Input;
 
 using Vigicom.Models;
@@ -102,7 +98,7 @@ namespace Vigicom.ViewModels
                     UserPassword = UserPassword
                 };
 
-                account = await AccountService.Instance.Add(account);
+                account = await DbService.Instance.Add(account);
                 if (account != null)
                 {
                     Preferences.Set(Constants.KEY_CURRENT_ACCOUNT_ID, account.Id.ToString());
@@ -132,7 +128,7 @@ namespace Vigicom.ViewModels
                     UserPassword = UserPassword
                 };
 
-                if (await AccountService.Instance.Edit(account))
+                if (await DbService.Instance.Edit(account))
                 {
                     await DisplayAlert("Genial!", "La cuenta se ha modificado correctamente.", "Entendido");
                     await Navigation.PopAsync();

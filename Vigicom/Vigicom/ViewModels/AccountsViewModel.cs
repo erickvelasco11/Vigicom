@@ -5,7 +5,6 @@ using MvvmHelpers.Interfaces;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Windows.Input;
 
 using Vigicom.Models;
 using Vigicom.Pages;
@@ -41,7 +40,7 @@ namespace Vigicom.ViewModels
 
         private async void FillList()
         {
-            var accounts = await AccountService.Instance.GetAll();
+            var accounts = await DbService.Instance.GetAll<Account>();
             Accounts.AddRange(accounts);
         }
 
@@ -55,7 +54,7 @@ namespace Vigicom.ViewModels
 
             if (await DisplayAlert("Cuidado", "Esta acción no se puede deshacer. Seguro que deseas continuar?", "Seguro", "Volver"))
             {
-                if (await AccountService.Instance.Delete(account.Id))
+                if (await DbService.Instance.Delete(account))
                 {
                     Accounts.Remove(account);
                     await DisplayAlert("Genial!", "La cuenta se ha eliminado correctamente", "Entendido");

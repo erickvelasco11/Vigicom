@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ViewModels="clr-namespace:Vigicom.ViewModels"
+             x:Class="Vigicom.Pages.HistoricalPage"
+             Title="Historial">
+    <ContentPage.BindingContext>
+        <ViewModels:HistoricalViewModel />
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <CollectionView ItemsSource="{Binding Historical}"
+                        SelectionMode="None">
+            <CollectionView.EmptyView>
+                <StackLayout VerticalOptions="CenterAndExpand">
+                    <Label Text="No hay registros de acciones"
+                           FontSize="32"
+                           HorizontalTextAlignment="Center"
+                           VerticalOptions="CenterAndExpand" />
+                </StackLayout>
+            </CollectionView.EmptyView>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Padding="16">
+                            <Label Text="{Binding Name}"
+                                   FontSize="26"
+                                   FontAttributes="Bold" />
+                            <Label Text="{Binding SimNumber}"
+                                   FontSize="20" />
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </ContentPage.Content>
+</ContentPage>
