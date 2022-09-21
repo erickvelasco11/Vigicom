@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             xmlns:ViewModels="clr-namespace:Vigicom.ViewModels"
+             x:Class="Vigicom.Pages.ProgrammingPage"
+             Title="Programación">
+    <ContentPage.BindingContext>
+        <ViewModels:ProgrammingViewModel />
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <Grid Padding="32"
+              RowSpacing="32">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Button Grid.Row="0"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2"
+                    Text="Clave programación"
+                    HorizontalOptions="Center"
+                    CornerRadius="8"
+                    FontSize="Large" />
+            <Button Grid.Row="1"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2"
+                    Text="Usuarios"
+                    FontSize="28"
+                    BorderColor="#003884"
+                    BorderWidth="3"
+                    BackgroundColor="Transparent"
+                    TextColor="Black"
+                    xct:TouchEffect.NativeAnimation="True"
+                    CornerRadius="16" />
+            <Button Grid.Row="2"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2"
+                    Text="Administradores"
+                    FontSize="28"
+                    BorderColor="#003884"
+                    BorderWidth="3"
+                    BackgroundColor="Transparent"
+                    TextColor="Black"
+                    xct:TouchEffect.NativeAnimation="True"
+                    CornerRadius="16" />
+            <Button Grid.Row="3"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2"
+                    Text="ID de Alarma"
+                    FontSize="28"
+                    BorderColor="#003884"
+                    BorderWidth="3"
+                    BackgroundColor="Transparent"
+                    TextColor="Black"
+                    xct:TouchEffect.NativeAnimation="True"
+                    CornerRadius="16" />
+            <Button Grid.Row="4"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2"
+                    Text="Tiempos de Sirena"
+                    FontSize="28"
+                    BorderColor="#003884"
+                    BorderWidth="3"
+                    BackgroundColor="Transparent"
+                    TextColor="Black"
+                    xct:TouchEffect.NativeAnimation="True"
+                    CornerRadius="16" />
+            <Button Grid.Row="5"
+                    Grid.Column="0"
+                    Text="TEST Sirenas"
+                    HorizontalOptions="FillAndExpand"
+                    CornerRadius="8"
+                    FontSize="Large" />
+            <Button Grid.Row="5"
+                    Grid.Column="1"
+                    Text="TEST SMS"
+                    HorizontalOptions="FillAndExpand"
+                    CornerRadius="8"
+                    FontSize="Large" />
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
