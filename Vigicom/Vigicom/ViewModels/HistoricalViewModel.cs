@@ -1,9 +1,13 @@
 ﻿
 using MvvmHelpers;
 
+using System;
+using System.Linq;
+
 using Vigicom.Models;
 using Vigicom.Services;
 
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace Vigicom.ViewModels
@@ -23,10 +27,13 @@ namespace Vigicom.ViewModels
 
         private async void Init()
         {
-            var registers = await DbService.Instance.GetAll<Historical>();
-            Historical.AddRange(registers);
+            var currentAccountId = Guid.Parse(Preferences.Get(Constants.KEY_CURRENT_ACCOUNT_ID, Guid.Empty.ToString()));
+            var registers = await DbService.Instance.Find<Historical> (model => model.AccountId == currentAccountId);
+            if (registers.Count > 0)
+            {
+                registers = registers.OrderByDescending(model => model.Date).ToList();
+                Historical.AddRange(registers);
+            }
         }
-
-
     }
 }

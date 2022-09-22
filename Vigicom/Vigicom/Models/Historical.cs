@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Vigicom.Models
 {
@@ -11,5 +9,7 @@ namespace Vigicom.Models
         public DateTime Date { get; set; }
 
         public string Description { get; set; }
+
+        public Guid AccountId { get; set; }
     }
 }

@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 
 using Vigicom.Models;
@@ -38,10 +39,23 @@ namespace Vigicom.Services
             return await db.InsertAsync(register) > 0 ? register : default;
         }
 
-        public async Task<T> Get<T>(Guid id) where T : new()
+        public async Task<T> Single<T>(Guid id) where T : new()
         {
             await Init<T>();
             return await db.GetAsync<T>(id);
+        }
+
+        public async Task<List<T>> Find<T>(Expression<Func<T, bool>> where) where T : new()
+        {
+            try
+            {
+                await Init<T>();
+                return await db.Table<T>().Where(where).ToListAsync();
+            }
+            catch
+            {
+                throw;
+            }
         }
 
         public async Task<bool> Delete<T>(Guid id) where T : new()

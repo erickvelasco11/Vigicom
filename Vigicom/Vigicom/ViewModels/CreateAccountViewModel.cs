@@ -1,5 +1,6 @@
 ﻿using MvvmHelpers.Commands;
 
+using System;
 using System.Linq;
 using System.Windows.Input;
 
@@ -93,6 +94,7 @@ namespace Vigicom.ViewModels
             {
                 var account = new Account()
                 {
+                    Id = Guid.NewGuid(),
                     Name = Name,
                     SimNumber = SimNumber,
                     UserPassword = UserPassword

@@ -24,45 +24,60 @@
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout VerticalOptions="Fill"
-                     Padding="32,64">
+                     Padding="32,64"
+                     BackgroundColor="WhiteSmoke">
             <ImageButton Source="ic_logo_round.png"
                          VerticalOptions="FillAndExpand"
                          BackgroundColor="Transparent"
+                         CornerRadius="64"
                          xct:TouchEffect.NativeAnimation="True"
-                         Command="{Binding BtnSosCommand}" />
+                         Command="{Binding BtnSosCommand}"
+                         IsEnabled="{Binding AllowClick}" />
             <StackLayout Orientation="Horizontal"
                          HorizontalOptions="Fill">
                 <Button ImageSource="ic_fire.png"
                         Text="Incendio"
                         HorizontalOptions="FillAndExpand"
-                        BackgroundColor="Transparent"
+                        BackgroundColor="White"
                         BorderColor="#003884"
                         FontSize="24"
                         BorderWidth="3"
                         TextColor="Black"
+                        xct:ShadowEffect.Color="Black"
+                        xct:ShadowEffect.Radius="5"
+                        CornerRadius="8"
                         xct:TouchEffect.NativeAnimation="True"
-                        Command="{Binding BtnFireCommand}" />
+                        Command="{Binding BtnFireCommand}"
+                        IsEnabled="{Binding AllowClick}" />
                 <Button ImageSource="ic_hospital.png"
                         Text="Médica"
+                        xct:ShadowEffect.Color="Black"
+                        xct:ShadowEffect.Radius="5"
                         HorizontalOptions="FillAndExpand"
-                        BackgroundColor="Transparent"
+                        BackgroundColor="White"
                         BorderColor="#003884"
                         BorderWidth="3"
                         TextColor="Black"
                         FontSize="24"
+                        CornerRadius="8"
                         xct:TouchEffect.NativeAnimation="True"
-                        Command="{Binding BtnHospitalCommand}" />
+                        Command="{Binding BtnHospitalCommand}"
+                        IsEnabled="{Binding AllowClick}" />
             </StackLayout>
             <Button ImageSource="ic_assistance.png"
                     Text="Asistencia"
-                    BackgroundColor="Transparent"
+                    BackgroundColor="White"
                     BorderColor="#003884"
                     BorderWidth="3"
                     TextColor="Black"
                     FontSize="24"
                     Margin="0,16,0,0"
                     xct:TouchEffect.NativeAnimation="True"
-                    Command="{Binding BtnAssistanceCommand}" />
+                    xct:ShadowEffect.Color="Black"
+                    xct:ShadowEffect.Radius="5"
+                    CornerRadius="8"
+                    Command="{Binding BtnAssistanceCommand}"
+                    IsEnabled="{Binding AllowClick}" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
