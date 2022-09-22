@@ -28,7 +28,7 @@ namespace Vigicom.ViewModels
         private async void Init()
         {
             var currentAccountId = Guid.Parse(Preferences.Get(Constants.KEY_CURRENT_ACCOUNT_ID, Guid.Empty.ToString()));
-            var registers = await DbService.Instance.Find<Historical> (model => model.AccountId == currentAccountId);
+            var registers = await DbService.Instance.GetAll<Historical>();//.Find<Historical> (model => model.AccountId == currentAccountId);
             if (registers.Count > 0)
             {
                 registers = registers.OrderByDescending(model => model.Date).ToList();

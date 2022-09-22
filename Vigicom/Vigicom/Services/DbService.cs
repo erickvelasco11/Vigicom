@@ -70,6 +70,12 @@ namespace Vigicom.Services
             return await db.DeleteAsync(register) > 0;
         }
 
+        public async Task<bool> Delete<T>(Expression<Func<T, bool>> where) where T : new()
+        {
+            await Init<T>();
+            return await db.Table<T>().DeleteAsync(where) > 0;
+        }
+
         public async Task<bool> Edit<T>(T register) where T : new()
         {
             await Init<T>();

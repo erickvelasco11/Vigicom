@@ -57,6 +57,7 @@ namespace Vigicom.ViewModels
                 if (await DbService.Instance.Delete(account))
                 {
                     Accounts.Remove(account);
+                    await DbService.Instance.Delete<Historical>(model => model.AccountId == account.Id);
                     await DisplayAlert("Genial!", "La cuenta se ha eliminado correctamente", "Entendido");
                 }
 
