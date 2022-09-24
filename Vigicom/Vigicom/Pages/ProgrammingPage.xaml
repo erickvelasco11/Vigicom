@@ -10,7 +10,8 @@
     </ContentPage.BindingContext>
     <ContentPage.Content>
         <Grid Padding="32"
-              RowSpacing="32" BackgroundColor="WhiteSmoke">
+              RowSpacing="32"
+              BackgroundColor="WhiteSmoke">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
@@ -27,7 +28,9 @@
                     CornerRadius="8"
                     FontSize="Large"
                     xct:ShadowEffect.Color="Black"
-                    xct:ShadowEffect.Radius="5"/>
+                    xct:ShadowEffect.Radius="5"
+                    Command="{Binding BtnPasswordCommand}"
+                    IsEnabled="{Binding IsBusy}" />
             <Button Grid.Row="1"
                     Grid.Column="0"
                     Grid.ColumnSpan="2"
@@ -39,7 +42,8 @@
                     TextColor="Black"
                     xct:ShadowEffect.Color="Black"
                     xct:ShadowEffect.Radius="5"
-                    CornerRadius="16" />
+                    CornerRadius="16"
+                    Command="{Binding BtnUsersCommand}" />
             <Button Grid.Row="2"
                     Grid.Column="0"
                     Grid.ColumnSpan="2"
@@ -51,7 +55,8 @@
                     TextColor="Black"
                     xct:ShadowEffect.Color="Black"
                     xct:ShadowEffect.Radius="5"
-                    CornerRadius="16" />
+                    CornerRadius="16"
+                    Command="{Binding BtnAdministratorsCommand}" />
             <Button Grid.Row="3"
                     Grid.Column="0"
                     Grid.ColumnSpan="2"
@@ -63,7 +68,8 @@
                     TextColor="Black"
                     xct:ShadowEffect.Color="Black"
                     xct:ShadowEffect.Radius="5"
-                    CornerRadius="16" />
+                    CornerRadius="16"
+                    Command="{Binding BtnIdAlarmCommand}" />
             <Button Grid.Row="4"
                     Grid.Column="0"
                     Grid.ColumnSpan="2"
@@ -75,7 +81,8 @@
                     TextColor="Black"
                     xct:ShadowEffect.Color="Black"
                     xct:ShadowEffect.Radius="5"
-                    CornerRadius="16" />
+                    CornerRadius="16"
+                    Command="{Binding BtnSirenTimesCommand}" />
             <Button Grid.Row="5"
                     Grid.Column="0"
                     Text="TEST Sirenas"
@@ -83,7 +90,9 @@
                     CornerRadius="8"
                     FontSize="Large"
                     xct:ShadowEffect.Color="Black"
-                    xct:ShadowEffect.Radius="5" />
+                    xct:ShadowEffect.Radius="5"
+                    Command="{Binding BtnTestSirenCommand}"
+                    IsEnabled="{Binding IsBusy}" />
             <Button Grid.Row="5"
                     Grid.Column="1"
                     Text="TEST SMS"
@@ -91,7 +100,9 @@
                     CornerRadius="8"
                     FontSize="Large"
                     xct:ShadowEffect.Color="Black"
-                    xct:ShadowEffect.Radius="5" />
+                    xct:ShadowEffect.Radius="5"
+                    Command="{Binding BtnTestSmsCommand}"
+                    IsEnabled="{Binding IsBusy}" />
         </Grid>
     </ContentPage.Content>
 </ContentPage>

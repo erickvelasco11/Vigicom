@@ -32,7 +32,7 @@
                          CornerRadius="64"
                          xct:TouchEffect.NativeAnimation="True"
                          Command="{Binding BtnSosCommand}"
-                         IsEnabled="{Binding AllowClick}" />
+                         IsEnabled="{Binding IsBusy}" />
             <StackLayout Orientation="Horizontal"
                          HorizontalOptions="Fill">
                 <Button ImageSource="ic_fire.png"
@@ -48,7 +48,7 @@
                         CornerRadius="8"
                         xct:TouchEffect.NativeAnimation="True"
                         Command="{Binding BtnFireCommand}"
-                        IsEnabled="{Binding AllowClick}" />
+                        IsEnabled="{Binding IsBusy}" />
                 <Button ImageSource="ic_hospital.png"
                         Text="Médica"
                         xct:ShadowEffect.Color="Black"
@@ -62,7 +62,7 @@
                         CornerRadius="8"
                         xct:TouchEffect.NativeAnimation="True"
                         Command="{Binding BtnHospitalCommand}"
-                        IsEnabled="{Binding AllowClick}" />
+                        IsEnabled="{Binding IsBusy}" />
             </StackLayout>
             <Button ImageSource="ic_assistance.png"
                     Text="Asistencia"
@@ -77,7 +77,7 @@
                     xct:ShadowEffect.Radius="5"
                     CornerRadius="8"
                     Command="{Binding BtnAssistanceCommand}"
-                    IsEnabled="{Binding AllowClick}" />
+                    IsEnabled="{Binding IsBusy}" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

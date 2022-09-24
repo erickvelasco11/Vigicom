@@ -21,14 +21,6 @@ namespace Vigicom.ViewModels
         public ICommand BtnHospitalCommand { get; }
         public ICommand BtnAssistanceCommand { get; }
 
-
-        private bool allowClick = true;
-        public bool AllowClick
-        {
-            get => allowClick;
-            set => SetProperty(ref allowClick, value);
-        }
-
         public MainViewModel()
         {
         }
@@ -52,6 +44,7 @@ namespace Vigicom.ViewModels
             var currentId = Guid.Parse(Preferences.Get(Constants.KEY_CURRENT_ACCOUNT_ID, Guid.Empty.ToString()));
             var currentAccount = await DbService.Instance.Single<Account>(currentId);
             Title = currentAccount.Name;
+            IsBusy = true;
         }
 
         private async void MenAccountsClick()
@@ -71,56 +64,30 @@ namespace Vigicom.ViewModels
 
         private async void BtnSosClick()
         {
-            await CallNumber("SOS Click");
+            IsBusy = false;
+            await Tools.CallNumber("Llamada de SOS.");
+            IsBusy = true;
         }
 
         private async void BtnFireClick()
         {
-            await SendSMS("Fire Click");
+            IsBusy = false;
+            await Tools.SendSMS("Señal de incendio.", "");
+            IsBusy = true;
         }
 
         private async void BtnHospitalClick()
         {
-            await SendSMS("Hospital Click");
+            IsBusy = false;
+            await Tools.SendSMS("Señal médica.", "");
+            IsBusy = true;
         }
 
         private async void BtnAssistanceClick()
         {
-            await SendSMS("Asistencia Click");
-        }
-
-        private async Task SendSMS(string type)
-        {
-            AllowClick = false;
-            var currentAccountId = Preferences.Get(Constants.KEY_CURRENT_ACCOUNT_ID, Guid.Empty.ToString());
-            var currentAccount = await DbService.Instance.Single<Account>(Guid.Parse(currentAccountId));
-            var register = new Historical
-            {
-                Id = Guid.NewGuid(),
-                Date = DateTime.Now,
-                Description = "SMS " + type + " enviado a " + currentAccount.SimNumber,
-                AccountId = currentAccount.Id
-            };
-            await DbService.Instance.Add(register);
-            await ConnectivityService.Instance.SendSms(type, currentAccount.SimNumber);
-            AllowClick = true;
-        }
-
-        private async Task CallNumber(string type)
-        {
-            AllowClick = false;
-            var currentAccountId = Preferences.Get(Constants.KEY_CURRENT_ACCOUNT_ID, Guid.Empty.ToString());
-            var currentAccount = await DbService.Instance.Single<Account>(Guid.Parse(currentAccountId));
-            var register = new Historical
-            {
-                Id = Guid.NewGuid(),
-                Date = DateTime.Now,
-                Description = "Called " + type + " enviado a " + currentAccount.SimNumber,
-                AccountId = currentAccount.Id
-            };
-            await DbService.Instance.Add(register);
-            ConnectivityService.Instance.PlacePhoneCall(currentAccount.SimNumber);
-            AllowClick = true;
+            IsBusy = false;
+            await Tools.SendSMS("Señal de asistencia.", "");
+            IsBusy = true;
         }
     }
 }

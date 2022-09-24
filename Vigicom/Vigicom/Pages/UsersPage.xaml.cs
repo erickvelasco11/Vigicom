@@ -7,12 +7,12 @@ using Xamarin.Forms.Xaml;
 namespace Vigicom.Pages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class ProgrammingPage : ContentPage
+    public partial class UsersPage : ContentPage
     {
-        public ProgrammingPage()
+        public UsersPage()
         {
             InitializeComponent();
-            BindingContext = new ProgrammingViewModel(Navigation);
+            BindingContext = new UsersViewModel(Navigation);
         }
     }
 }
