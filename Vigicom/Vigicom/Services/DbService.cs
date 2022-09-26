@@ -6,8 +6,6 @@ using System.IO;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 
-using Vigicom.Models;
-
 using Xamarin.Essentials;
 
 namespace Vigicom.Services

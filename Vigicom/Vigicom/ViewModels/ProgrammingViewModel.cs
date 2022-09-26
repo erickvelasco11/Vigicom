@@ -61,12 +61,14 @@ namespace Vigicom.ViewModels
         private async Task BtnTestSirenClick()
         {
             IsBusy = false;
+            await Tools.SendSMS("Prueba Sirena.", "*AP12,{UserPassword},1");
             IsBusy = true;
         }
 
         private async Task BtnTestSmsClick()
         {
             IsBusy = false;
+            await Tools.SendSMS("Prueba SMS.", "*AP12,{UserPassword},2");
             IsBusy = true;
         }
     }

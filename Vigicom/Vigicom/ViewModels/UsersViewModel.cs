@@ -1,11 +1,7 @@
 ﻿using MvvmHelpers.Commands;
 using MvvmHelpers.Interfaces;
 
-using System;
 using System.Threading.Tasks;
-
-using Vigicom.Models;
-using Vigicom.Services;
 
 using Xamarin.Essentials;
 using Xamarin.Forms;
@@ -64,9 +60,7 @@ namespace Vigicom.ViewModels
             }
 
             IsBusy = false;
-            var currentAccountId = Preferences.Get(Constants.KEY_CURRENT_ACCOUNT_ID, Guid.Empty.ToString());
-            var currentAccount = await DbService.Instance.Single<Account>(Guid.Parse(currentAccountId));
-            await Tools.SendSMS("Cambio de data del usuario", "*AP03," + currentAccount.UserPassword + "," + position + "," + number + "," + name);
+            await Tools.SendSMS("Cambio de data del usuario", "*AP03,{UserPassword}," + position + "," + number + "," + name);
             Preferences.Set(Constants.KEY_USERS_POSITION, position);
             Preferences.Set(Constants.KEY_USERS_NUMBER, number);
             Preferences.Set(Constants.KEY_USERS_NAME, name);

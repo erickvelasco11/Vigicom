@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 using Vigicom.Models;
@@ -16,6 +14,7 @@ namespace Vigicom
         {
             var currentAccountId = Preferences.Get(Constants.KEY_CURRENT_ACCOUNT_ID, Guid.Empty.ToString());
             var currentAccount = await DbService.Instance.Single<Account>(Guid.Parse(currentAccountId));
+            text.Replace("{UserPassword}", currentAccount.UserPassword);
             var register = new Historical
             {
                 Id = Guid.NewGuid(),

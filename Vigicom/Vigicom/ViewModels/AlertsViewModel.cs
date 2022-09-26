@@ -1,11 +1,7 @@
 ﻿using MvvmHelpers.Commands;
 using MvvmHelpers.Interfaces;
 
-using System;
 using System.Threading.Tasks;
-
-using Vigicom.Models;
-using Vigicom.Services;
 
 using Xamarin.Essentials;
 using Xamarin.Forms;
@@ -217,9 +213,7 @@ namespace Vigicom.ViewModels
             }
 
             IsBusy = false;
-            var currentAccountId = Preferences.Get(Constants.KEY_CURRENT_ACCOUNT_ID, Guid.Empty.ToString());
-            var currentAccount = await DbService.Instance.Single<Account>(Guid.Parse(currentAccountId));
-            await Tools.SendSMS("Cambio de alerta posición " + position, "*AP01," + currentAccount.UserPassword + "," + position + "," + number + "," + type.Substring(0, 1));
+            await Tools.SendSMS("Cambio de alerta posición " + position, "*AP01,{UserPassword}," + position + "," + number + "," + type.Substring(0, 1));
             Preferences.Set(Constants.KEY_ALERT_NUMBER + position, number);
             Preferences.Set(Constants.KEY_ALERT_TYPE + position, type);
             IsBusy = true;
