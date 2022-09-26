@@ -4,10 +4,8 @@
              xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
              xmlns:ViewModels="clr-namespace:Vigicom.ViewModels"
              x:Class="Vigicom.Pages.MainPage"
+             x:DataType="ViewModels:MainViewModel"
              Title="{Binding Title}">
-    <ContentPage.BindingContext>
-        <ViewModels:MainViewModel />
-    </ContentPage.BindingContext>
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Cuentas"
                      Priority="0"

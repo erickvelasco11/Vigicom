@@ -47,6 +47,7 @@ namespace Vigicom.ViewModels
 
         private async Task BtnAdministratorsClick()
         {
+            await Navigation.PushAsync(new AlertsPage());
         }
 
         private async Task BtnIdAlarmClick()

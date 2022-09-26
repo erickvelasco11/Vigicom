@@ -1,0 +1,207 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             xmlns:ViewModel="clr-namespace:Vigicom.ViewModels"
+             xmlns:views="clr-namespace:Vigicom.Views"
+             x:Class="Vigicom.Pages.AlertsPage"
+             Title="Alertas">
+    <ContentPage.BindingContext>
+        <ViewModel:AlertsViewModel />
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout>
+            <Grid Padding="16">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Entry Grid.Column="0"
+                       Grid.Row="0"
+                       Placeholder="Alerta 1"
+                       HorizontalOptions="FillAndExpand"
+                       Text="{Binding Number1}" />
+                <Picker Grid.Column="1"
+                        Grid.Row="0"
+                        Title="Selecciona"
+                        SelectedItem="{Binding Type1}">
+                    <Picker.Items>
+                        <x:String>Texto</x:String>
+                        <x:String>Llamada</x:String>
+                    </Picker.Items>
+                </Picker>
+                <ImageButton Grid.Column="2"
+                             Grid.Row="0"
+                             Source="ic_action_send.png"
+                             Padding="16"
+                             BackgroundColor="Transparent"
+                             CornerRadius="16"
+                             xct:TouchEffect.NativeAnimation="True"
+                             xct:IconTintColorEffect.TintColor="Gray"
+                             Command="{Binding BtnSend1Command}" />
+                <Entry Grid.Column="0"
+                       Grid.Row="1"
+                       Placeholder="Alerta 2"
+                       HorizontalOptions="FillAndExpand"
+                       Text="{Binding Number2}" />
+                <Picker Grid.Column="1"
+                        Grid.Row="1"
+                        Title="Selecciona"
+                        SelectedItem="{Binding Type2}">
+                    <Picker.Items>
+                        <x:String>Texto</x:String>
+                        <x:String>Llamada</x:String>
+                    </Picker.Items>
+                </Picker>
+                <ImageButton Grid.Column="2"
+                             Grid.Row="1"
+                             Source="ic_action_send.png"
+                             Padding="16"
+                             BackgroundColor="Transparent"
+                             CornerRadius="16"
+                             xct:TouchEffect.NativeAnimation="True"
+                             xct:IconTintColorEffect.TintColor="Gray"
+                             Command="{Binding BtnSend2Command}" />
+                <Entry Grid.Column="0"
+                       Grid.Row="2"
+                       Placeholder="Alerta 3"
+                       HorizontalOptions="FillAndExpand"
+                       Text="{Binding Number3}" />
+                <Picker Grid.Column="1"
+                        Grid.Row="2"
+                        Title="Selecciona"
+                        SelectedItem="{Binding Type3}">
+                    <Picker.Items>
+                        <x:String>Texto</x:String>
+                        <x:String>Llamada</x:String>
+                    </Picker.Items>
+                </Picker>
+                <ImageButton Grid.Column="2"
+                             Grid.Row="2"
+                             Source="ic_action_send.png"
+                             Padding="16"
+                             BackgroundColor="Transparent"
+                             CornerRadius="16"
+                             xct:TouchEffect.NativeAnimation="True"
+                             xct:IconTintColorEffect.TintColor="Gray"
+                             Command="{Binding BtnSend3Command}" />
+                <Entry Grid.Column="0"
+                       Grid.Row="3"
+                       Placeholder="Alerta 4"
+                       HorizontalOptions="FillAndExpand"
+                       Text="{Binding Number4}" />
+                <Picker Grid.Column="1"
+                        Grid.Row="3"
+                        Title="Selecciona"
+                        SelectedItem="{Binding Type4}">
+                    <Picker.Items>
+                        <x:String>Texto</x:String>
+                        <x:String>Llamada</x:String>
+                    </Picker.Items>
+                </Picker>
+                <ImageButton Grid.Column="2"
+                             Grid.Row="3"
+                             Source="ic_action_send.png"
+                             Padding="16"
+                             BackgroundColor="Transparent"
+                             CornerRadius="16"
+                             xct:TouchEffect.NativeAnimation="True"
+                             xct:IconTintColorEffect.TintColor="Gray"
+                             Command="{Binding BtnSend4Command}" />
+                <Entry Grid.Column="0"
+                       Grid.Row="4"
+                       Placeholder="Alerta 5"
+                       HorizontalOptions="FillAndExpand"
+                       Text="{Binding Number5}" />
+                <Picker Grid.Column="1"
+                        Grid.Row="4"
+                        Title="Selecciona"
+                        SelectedItem="{Binding Type5}">
+                    <Picker.Items>
+                        <x:String>Texto</x:String>
+                        <x:String>Llamada</x:String>
+                    </Picker.Items>
+                </Picker>
+                <ImageButton Grid.Column="2"
+                             Grid.Row="4"
+                             Source="ic_action_send.png"
+                             Padding="16"
+                             BackgroundColor="Transparent"
+                             CornerRadius="16"
+                             xct:TouchEffect.NativeAnimation="True"
+                             xct:IconTintColorEffect.TintColor="Gray"
+                             Command="{Binding BtnSend5Command}" />
+                <Entry Grid.Column="0"
+                       Grid.Row="5"
+                       Placeholder="Alerta 6"
+                       HorizontalOptions="FillAndExpand"
+                       Text="{Binding Number6}" />
+                <Picker Grid.Column="1"
+                        Grid.Row="5"
+                        Title="Selecciona"
+                        SelectedItem="{Binding Type6}">
+                    <Picker.Items>
+                        <x:String>Texto</x:String>
+                        <x:String>Llamada</x:String>
+                    </Picker.Items>
+                </Picker>
+                <ImageButton Grid.Column="2"
+                             Grid.Row="5"
+                             Source="ic_action_send.png"
+                             Padding="16"
+                             BackgroundColor="Transparent"
+                             CornerRadius="16"
+                             xct:TouchEffect.NativeAnimation="True"
+                             xct:IconTintColorEffect.TintColor="Gray"
+                             Command="{Binding BtnSend6Command}" />
+                <Entry Grid.Column="0"
+                       Grid.Row="6"
+                       Placeholder="Alerta 7"
+                       HorizontalOptions="FillAndExpand"
+                       Text="{Binding Number8}" />
+                <Picker Grid.Column="1"
+                        Grid.Row="6"
+                        Title="Selecciona"
+                        SelectedItem="{Binding Type7}">
+                    <Picker.Items>
+                        <x:String>Texto</x:String>
+                        <x:String>Llamada</x:String>
+                    </Picker.Items>
+                </Picker>
+                <ImageButton Grid.Column="2"
+                             Grid.Row="6"
+                             Source="ic_action_send.png"
+                             Padding="16"
+                             BackgroundColor="Transparent"
+                             CornerRadius="16"
+                             xct:TouchEffect.NativeAnimation="True"
+                             xct:IconTintColorEffect.TintColor="Gray"
+                             Command="{Binding BtnSend7Command}" />
+                <Entry Grid.Column="0"
+                       Grid.Row="7"
+                       Placeholder="Alerta 8"
+                       HorizontalOptions="FillAndExpand"
+                       Text="{Binding Number8}" />
+                <Picker Grid.Column="1"
+                        Grid.Row="7"
+                        Title="Selecciona"
+                        SelectedItem="{Binding Type8}">
+                    <Picker.Items>
+                        <x:String>Texto</x:String>
+                        <x:String>Llamada</x:String>
+                    </Picker.Items>
+                </Picker>
+                <ImageButton Grid.Column="2"
+                             Grid.Row="7"
+                             Source="ic_action_send.png"
+                             Padding="16"
+                             BackgroundColor="Transparent"
+                             CornerRadius="16"
+                             xct:TouchEffect.NativeAnimation="True"
+                             xct:IconTintColorEffect.TintColor="Gray"
+                             Command="{Binding BtnSend8Command}"/>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
