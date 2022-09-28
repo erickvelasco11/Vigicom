@@ -56,6 +56,7 @@ namespace Vigicom.ViewModels
 
         private async Task BtnSirenTimesClick()
         {
+            await Navigation.PushAsync(new TimesPage());
         }
 
         private async Task BtnTestSirenClick()

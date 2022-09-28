@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:Vigicom.ViewModels"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             x:Class="Vigicom.Pages.TimesPage"
+             x:DataType="viewModels:TimesViewModel"
+             Title="Tiempos">
+    <ContentPage.Content>
+        <Grid Padding="64">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <Label Text="Sirena"
+                   Grid.Column="0"
+                   Grid.Row="0"
+                   FontSize="24"
+                   HorizontalTextAlignment="End" />
+            <Entry x:Name="edtSiren"
+                   Text="{Binding SirenTime}"
+                   Grid.Column="1"
+                   Grid.Row="0"
+                   Keyboard="Numeric">
+                <Entry.Behaviors>
+                    <xct:EventToCommandBehavior EventName="TextChanged"
+                                                Command="{Binding EdtSirenTextChangedCommand}"
+                                                CommandParameter="{Binding Source={x:Reference edtSiren}, Path=Text}" />
+                </Entry.Behaviors>
+            </Entry>
+            <Label Text="Corneta Voz"
+                   Grid.Column="0"
+                   Grid.Row="1"
+                   FontSize="24"
+                   HorizontalTextAlignment="End" />
+            <Entry x:Name="edtVoice"
+                   Text="{Binding VoiceTime}"
+                   Grid.Column="1"
+                   Grid.Row="1"
+                   MaxLength="2"
+                   Keyboard="Numeric">
+                <Entry.Behaviors>
+                    <xct:EventToCommandBehavior EventName="TextChanged"
+                                                Command="{Binding EdtVoiceTextChangedCommand}"
+                                                CommandParameter="{Binding Source={x:Reference edtVoice}, Path=Text}" />
+                </Entry.Behaviors>
+            </Entry>
+            <Label Text="Solo para VIGICOM voz"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="2"
+                   Grid.Row="2"
+                   HorizontalOptions="Center"
+                   FontSize="20"
+                   Padding="0,0,0,64" />
+            <Button Text="Enviar Mensaje"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2"
+                    Grid.Row="3"
+                    CornerRadius="32"
+                    Command="{Binding BtnSendSmsCommand} " />
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
