@@ -21,61 +21,54 @@
                      Command="{Binding MenHistoricalCommand}" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <StackLayout VerticalOptions="Fill"
-                     Padding="32,64"
-                     BackgroundColor="WhiteSmoke">
+        <Grid VerticalOptions="Fill"
+              Padding="32"
+              BackgroundColor="WhiteSmoke">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
             <ImageButton Source="ic_logo_round.png"
+                         Grid.Column="0"
+                         Grid.ColumnSpan="3"
+                         Grid.Row="0"
                          VerticalOptions="FillAndExpand"
                          BackgroundColor="Transparent"
                          CornerRadius="64"
+                         Padding="64"
                          xct:TouchEffect.NativeAnimation="True"
                          Command="{Binding BtnSosCommand}"
                          IsEnabled="{Binding IsBusy}" />
-            <StackLayout Orientation="Horizontal"
-                         HorizontalOptions="Fill">
-                <Button ImageSource="ic_fire.png"
-                        Text="Incendio"
-                        HorizontalOptions="FillAndExpand"
-                        BackgroundColor="White"
-                        BorderColor="#003884"
-                        FontSize="24"
-                        BorderWidth="3"
-                        TextColor="Black"
-                        xct:ShadowEffect.Color="Black"
-                        xct:ShadowEffect.Radius="5"
-                        CornerRadius="8"
-                        xct:TouchEffect.NativeAnimation="True"
-                        Command="{Binding BtnFireCommand}"
-                        IsEnabled="{Binding IsBusy}" />
-                <Button ImageSource="ic_hospital.png"
-                        Text="Médica"
-                        xct:ShadowEffect.Color="Black"
-                        xct:ShadowEffect.Radius="5"
-                        HorizontalOptions="FillAndExpand"
-                        BackgroundColor="White"
-                        BorderColor="#003884"
-                        BorderWidth="3"
-                        TextColor="Black"
-                        FontSize="24"
-                        CornerRadius="8"
-                        xct:TouchEffect.NativeAnimation="True"
-                        Command="{Binding BtnHospitalCommand}"
-                        IsEnabled="{Binding IsBusy}" />
-            </StackLayout>
-            <Button ImageSource="ic_assistance.png"
-                    Text="Asistencia"
-                    BackgroundColor="White"
-                    BorderColor="#003884"
-                    BorderWidth="3"
-                    TextColor="Black"
-                    FontSize="24"
-                    Margin="0,16,0,0"
-                    xct:TouchEffect.NativeAnimation="True"
-                    xct:ShadowEffect.Color="Black"
-                    xct:ShadowEffect.Radius="5"
-                    CornerRadius="8"
-                    Command="{Binding BtnAssistanceCommand}"
-                    IsEnabled="{Binding IsBusy}" />
-        </StackLayout>
+            <ImageButton Source="ic_fire.png"
+                         Grid.Column="0"
+                         Grid.Row="1"
+                         HorizontalOptions="FillAndExpand"
+                         BackgroundColor="Transparent"
+                         CornerRadius="8"
+                         Margin="8"
+                         xct:TouchEffect.NativeAnimation="True"
+                         Command="{Binding BtnFireCommand}"
+                         IsEnabled="{Binding IsBusy}" />
+            <ImageButton Source="ic_hospital.png"
+                         Grid.Column="1"
+                         Grid.Row="1"
+                         HorizontalOptions="FillAndExpand"
+                         BackgroundColor="Transparent"
+                         CornerRadius="8"
+                         Margin="8"
+                         xct:TouchEffect.NativeAnimation="True"
+                         Command="{Binding BtnHospitalCommand}"
+                         IsEnabled="{Binding IsBusy}" />
+            <ImageButton Source="ic_assistance.png"
+                         Grid.Column="2"
+                         Grid.Row="1"
+                         BackgroundColor="Transparent"
+                         HorizontalOptions="FillAndExpand"
+                         CornerRadius="8"
+                         Margin="8"
+                         xct:TouchEffect.NativeAnimation="True"
+                         Command="{Binding BtnAssistanceCommand}"
+                         IsEnabled="{Binding IsBusy}" />
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

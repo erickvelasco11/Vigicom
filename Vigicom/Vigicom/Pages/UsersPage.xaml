@@ -9,44 +9,59 @@
         <ViewModels:UsersViewModel />
     </ContentPage.BindingContext>
     <ContentPage.Content>
-        <StackLayout Padding="96,128"
-                     VerticalOptions="StartAndExpand">
-            <StackLayout Orientation="Horizontal"
-                         Margin="0,0,0,16">
-                <Label Text="Posición"
-                       FontSize="24" />
-                <Entry x:Name="edtPosition"
-                       HorizontalOptions="FillAndExpand"
-                       Keyboard="Numeric"
-                       Text="{Binding Position}">
-                    <Entry.Behaviors>
-                        <xct:EventToCommandBehavior EventName="TextChanged"
-                                                    Command="{Binding EdtPositionTextChangedCommand}"
-                                                    CommandParameter="{Binding Source={x:Reference edtPosition}, Path=Text}" />
-                    </Entry.Behaviors>
-                </Entry>
-            </StackLayout>
-            <StackLayout Orientation="Horizontal"
-                         Margin="0,0,0,16">
-                <Label Text="Número"
-                       FontSize="24" />
-                <Entry HorizontalOptions="FillAndExpand"
-                       Keyboard="Numeric"
-                       MaxLength="10"
-                       Text="{Binding Number}" />
-            </StackLayout>
-            <StackLayout Orientation="Horizontal"
-                         Margin="0,0,0,96">
-                <Label Text="Nombre"
-                       FontSize="24" />
-                <Entry HorizontalOptions="FillAndExpand"
-                       Keyboard="Text"
-                       MaxLength="15"
-                       Text="{Binding Name}" />
-            </StackLayout>
-            <Button Text="Enviar mensaje"
-                    CornerRadius="16"
+        <Grid Padding="96" ColumnSpacing="32">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Label Grid.Column="0"
+                   Grid.Row="0"
+                   Text="Posición"
+                   FontSize="24"
+                   HorizontalTextAlignment="End" />
+            <Entry Grid.Column="1"
+                   Grid.Row="0"
+                   x:Name="edtPosition"
+                   Keyboard="Numeric"
+                   Text="{Binding Position}">
+                <Entry.Behaviors>
+                    <xct:EventToCommandBehavior EventName="TextChanged"
+                                                Command="{Binding EdtPositionTextChangedCommand}"
+                                                CommandParameter="{Binding Source={x:Reference edtPosition}, Path=Text}" />
+                </Entry.Behaviors>
+            </Entry>
+            <Label Grid.Column="0"
+                   Grid.Row="1"
+                   Text="Número"
+                   FontSize="24"
+                   HorizontalTextAlignment="End" />
+            <Entry Grid.Column="1"
+                   Grid.Row="1"
+                   Keyboard="Numeric"
+                   MaxLength="10"
+                   Text="{Binding Number}" />
+            <Label Grid.Column="0"
+                   Grid.Row="2"
+                   Text="Nombre"
+                   FontSize="24"
+                   HorizontalTextAlignment="End" />
+            <Entry Grid.Column="1"
+                   Grid.Row="2"
+                   Keyboard="Text"
+                   MaxLength="15"
+                   Text="{Binding Name}"
+                   Margin="0,0,0,96"/>
+            <Button Grid.Column="0"
+                    Grid.Row="3"
+                    Grid.ColumnSpan="2"
+                    Text="Enviar mensaje"
+                    CornerRadius="32"
                     Command="{Binding BtnSendSmsCommand}" />
-        </StackLayout>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

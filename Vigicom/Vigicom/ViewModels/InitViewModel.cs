@@ -23,7 +23,7 @@ namespace Vigicom.ViewModels
         {
             Task.Run(async () =>
             {
-                Thread.Sleep(1000);
+                Thread.Sleep(2000);
             }).ContinueWith(async task =>
             {
                 if (Preferences.Get(Constants.KEY_CURRENT_ACCOUNT_ID, Guid.Empty.ToString()) != Guid.Empty.ToString())

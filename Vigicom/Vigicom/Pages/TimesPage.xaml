@@ -7,7 +7,7 @@
              x:DataType="viewModels:TimesViewModel"
              Title="Tiempos">
     <ContentPage.Content>
-        <Grid Padding="64">
+        <Grid Padding="96" ColumnSpacing="32">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
@@ -56,7 +56,7 @@
                    Grid.Row="2"
                    HorizontalOptions="Center"
                    FontSize="20"
-                   Padding="0,0,0,64" />
+                   Padding="0,0,0,96" />
             <Button Text="Enviar Mensaje"
                     Grid.Column="0"
                     Grid.ColumnSpan="2"
