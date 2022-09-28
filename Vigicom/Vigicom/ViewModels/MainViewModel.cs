@@ -71,21 +71,21 @@ namespace Vigicom.ViewModels
         private async void BtnFireClick()
         {
             IsBusy = false;
-            await Tools.SendSMS("Señal de incendio.", "");
+            await Tools.SendSMS("Señal de incendio.", "*AP07,{UserPassword},");
             IsBusy = true;
         }
 
         private async void BtnHospitalClick()
         {
             IsBusy = false;
-            await Tools.SendSMS("Señal médica.", "");
+            await Tools.SendSMS("Señal médica.", "*AP06,{UserPassword},");
             IsBusy = true;
         }
 
         private async void BtnAssistanceClick()
         {
             IsBusy = false;
-            await Tools.SendSMS("Señal de asistencia.", "");
+            await Tools.SendSMS("Señal de asistencia.", "*AP06,{UserPassword},AS");
             IsBusy = true;
         }
     }

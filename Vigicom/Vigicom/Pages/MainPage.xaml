@@ -39,7 +39,7 @@
                          xct:TouchEffect.NativeAnimation="True"
                          Command="{Binding BtnSosCommand}"
                          IsEnabled="{Binding IsBusy}" />
-            <ImageButton Source="ic_fire.png"
+            <ImageButton Source="ic_hospital.png"
                          Grid.Column="0"
                          Grid.Row="1"
                          HorizontalOptions="FillAndExpand"
@@ -47,9 +47,9 @@
                          CornerRadius="8"
                          Margin="8"
                          xct:TouchEffect.NativeAnimation="True"
-                         Command="{Binding BtnFireCommand}"
+                         Command="{Binding BtnHospitalCommand}"
                          IsEnabled="{Binding IsBusy}" />
-            <ImageButton Source="ic_hospital.png"
+            <ImageButton Source="ic_fire.png"
                          Grid.Column="1"
                          Grid.Row="1"
                          HorizontalOptions="FillAndExpand"
@@ -57,7 +57,7 @@
                          CornerRadius="8"
                          Margin="8"
                          xct:TouchEffect.NativeAnimation="True"
-                         Command="{Binding BtnHospitalCommand}"
+                         Command="{Binding BtnFireCommand}"
                          IsEnabled="{Binding IsBusy}" />
             <ImageButton Source="ic_assistance.png"
                          Grid.Column="2"
