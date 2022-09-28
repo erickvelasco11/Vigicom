@@ -10,5 +10,6 @@
         public const string KEY_ALERT_TYPE = "AlertName";
         public const string KEY_TIMES_SIREN = "TimesSiren";
         public const string KEY_TIMES_VOICE = "TimesVoice";
+        public const string KEY_PANEL_NAME = "PanelName";
     }
 }

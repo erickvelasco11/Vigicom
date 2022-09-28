@@ -14,7 +14,7 @@ namespace Vigicom
         {
             var currentAccountId = Preferences.Get(Constants.KEY_CURRENT_ACCOUNT_ID, Guid.Empty.ToString());
             var currentAccount = await DbService.Instance.Single<Account>(Guid.Parse(currentAccountId));
-            text.Replace("{UserPassword}", currentAccount.UserPassword);
+            text = text.Replace("{UserPassword}", currentAccount.UserPassword);
             var register = new Historical
             {
                 Id = Guid.NewGuid(),

@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:Vigicom.ViewModels"
+             x:Class="Vigicom.Pages.PanelNamePage"
+             x:DataType="viewModels:PanelNameViewModel"
+             Title="Nombre del panel">
+    <ContentPage.Content>
+        <StackLayout Padding="64">
+            <Entry Text="{Binding PanelName}"
+                   Keyboard="Text"
+                   Placeholder="Nombre del panel de la alarma"
+                   Margin="0,0,0,64"
+                   MaxLength="30" />
+            <Button Text="Enviar Mensaje"
+                    CornerRadius="32"
+                    Command="{Binding BtnSendSmsCommand}" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

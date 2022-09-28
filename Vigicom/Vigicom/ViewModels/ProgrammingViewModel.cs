@@ -52,6 +52,7 @@ namespace Vigicom.ViewModels
 
         private async Task BtnIdAlarmClick()
         {
+            await Navigation.PushAsync(new PanelNamePage());
         }
 
         private async Task BtnSirenTimesClick()
