@@ -9,8 +9,8 @@
         <ViewModels:CreateAccountViewModel />
     </ContentPage.BindingContext>
     <ContentPage.Content>
-        <StackLayout Margin="32,32,32,0">
-            <Image Source="ic_logo_round.png" />
+        <StackLayout Margin="32,64,32,0">
+            <Image Source="logo.png" />
             <StackLayout Orientation="Vertical"
                          Margin="64">
                 <Entry Placeholder="Nombre"
@@ -19,7 +19,7 @@
                        Text="{Binding Name}" />
                 <Entry Placeholder="Número SIM"
                        MaxLength="10"
-                       Keyboard="Numeric"
+                       Keyboard="Telephone"
                        Margin="0,0,0,16"
                        Text="{Binding SimNumber}" />
                 <Entry Placeholder="Clave Usuario"

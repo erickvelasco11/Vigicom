@@ -18,6 +18,7 @@ namespace Vigicom.Pages
         public CreateAccountPage(Account account)
         {
             InitializeComponent();
+            Title = "Editar cuenta";
             BindingContext = new CreateAccountViewModel(Navigation, account);
         }
     }
