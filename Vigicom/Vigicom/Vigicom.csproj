@@ -26,6 +26,9 @@
     <Compile Update="Pages\InitPage.xaml.cs">
       <DependentUpon>InitPage.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Pages\ChangePasswordPage.xaml.cs">
+      <DependentUpon>ChangePasswordPage.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Pages\PanelNamePage.xaml.cs">
       <DependentUpon>PanelNamePage.xaml</DependentUpon>
     </Compile>

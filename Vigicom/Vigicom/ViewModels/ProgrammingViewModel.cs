@@ -37,6 +37,7 @@ namespace Vigicom.ViewModels
         private async Task BtnPasswordClick()
         {
             IsBusy = false;
+            await Navigation.PushAsync(new ChangePasswordPage());
             IsBusy = true;
         }
 

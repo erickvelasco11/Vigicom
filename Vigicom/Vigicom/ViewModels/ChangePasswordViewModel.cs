@@ -8,39 +8,39 @@ using Xamarin.Forms;
 
 namespace Vigicom.ViewModels
 {
-    public class PanelNameViewModel : MyBaseViewModel
+    public class ChangePasswordViewModel : MyBaseViewModel
     {
         public IAsyncCommand BtnSendSmsCommand { get; set; }
 
-        public PanelNameViewModel() { }
+        public ChangePasswordViewModel() { }
 
-        public PanelNameViewModel(INavigation navigation)
+        public ChangePasswordViewModel(INavigation navigation)
         {
             Navigation = navigation;
             BtnSendSmsCommand = new AsyncCommand(BtnSendSmsClick);
             IsBusy = true;
-            PanelName = Preferences.Get(Constants.KEY_PANEL_NAME, "");
+            Password = Preferences.Get(Constants.KEY_ALARM_PASSWORD, "");
         }
 
         private async Task BtnSendSmsClick()
         {
-            if (panelName == "")
+            if (password == "")
             {
                 await DisplayAlert("Campos vacíos", "Todos los campos deben ser diligenciados.", "Entendido");
                 return;
             }
 
             IsBusy = false;
-            await Tools.SendSMS("Cambio de nombre del panel.", "*AP02,{UserPassword}," + panelName);
-            Preferences.Set(Constants.KEY_PANEL_NAME, panelName);
+            await Tools.SendSMS("Cambio de contraseña de alarma.", "*AP02,{UserPassword}," + password);
+            Preferences.Set(Constants.KEY_ALARM_PASSWORD, password);
             IsBusy = true;
         }
 
-        private string panelName = "";
-        public string PanelName
+        private string password = "";
+        public string Password
         {
-            get => panelName;
-            set => SetProperty(ref panelName, value);
+            get => password;
+            set => SetProperty(ref password, value);
         }
     }
 }

@@ -11,5 +11,6 @@
         public const string KEY_TIMES_SIREN = "TimesSiren";
         public const string KEY_TIMES_VOICE = "TimesVoice";
         public const string KEY_PANEL_NAME = "PanelName";
+        public const string KEY_ALARM_PASSWORD = "AlarmPassword";
     }
 }
