@@ -20161,7 +20161,7 @@ namespace Vigicom.Droid
 			public const int highlighted_text_material_light = 2131034212;
 			
 			// aapt resource value: 0x7F050065
-			public const int launcher_background = 2131034213;
+			public const int ic_logo_background = 2131034213;
 			
 			// aapt resource value: 0x7F050066
 			public const int material_blue_grey_800 = 2131034214;

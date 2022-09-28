@@ -17,6 +17,7 @@ namespace Vigicom.ViewModels
         private Account CurrentAccount { get; set; }
 
         public ICommand BtnClearCommand { get; }
+
         public ICommand BtnSaveCommand { get; }
 
         public CreateAccountViewModel()
@@ -67,7 +68,6 @@ namespace Vigicom.ViewModels
             Name = "";
             SimNumber = "";
             UserPassword = "";
-            Title = "LOL";
         }
 
         private async void OnBtnSaveClick()
@@ -105,7 +105,7 @@ namespace Vigicom.ViewModels
                 {
                     Preferences.Set(Constants.KEY_CURRENT_ACCOUNT_ID, account.Id.ToString());
                     await DisplayAlert("Genial!", "La cuenta se ha guardado.", "Entendido");
-                    if (Navigation.NavigationStack.Count == 2)
+                    if (Navigation.NavigationStack.Count == 1)
                     {
                         await Navigation.PushAsync(new MainPage());
                         Navigation.RemovePage(Navigation.NavigationStack.First());
