@@ -9,21 +9,28 @@
         <ViewModels:CreateAccountViewModel />
     </ContentPage.BindingContext>
     <ContentPage.Content>
-        <StackLayout Margin="32,64,32,0">
-            <Image Source="logo.png" />
+        <StackLayout Margin="16">
+            <Image Source="logo.png"
+                   Margin="64" />
             <StackLayout Orientation="Vertical"
-                         Margin="64">
-                <Entry Placeholder="Nombre"
-                       Keyboard="Text"
-                       Margin="0,0,0,16"
-                       Text="{Binding Name}" />
-                <Entry Placeholder="Número SIM"
-                       MaxLength="10"
+                         Margin="16">
+                <Label Text="Nombre"
+                       Padding="4,0"
+                       Margin="0,-12"/>
+                <Entry Keyboard="Text"
+                       Text="{Binding Name}"
+                       Margin="0,0,0,16" />
+                <Label Text="Número SIM"
+                       Padding="4,0"
+                       Margin="0,-12" />
+                <Entry MaxLength="10"
                        Keyboard="Telephone"
                        Margin="0,0,0,16"
                        Text="{Binding SimNumber}" />
-                <Entry Placeholder="Clave Usuario"
-                       IsPassword="True"
+                <Label Text="Clave de usuario"
+                       Padding="4,0"
+                       Margin="0,-12" />
+                <Entry IsPassword="True"
                        MaxLength="4"
                        Keyboard="Numeric"
                        Margin="0,0,0,16"
@@ -32,10 +39,12 @@
                              HorizontalOptions="Fill">
                     <Button Text="Deshacer"
                             HorizontalOptions="FillAndExpand"
-                            Command="{Binding BtnClearCommand}" />
+                            Command="{Binding BtnClearCommand}"
+                            CornerRadius="32" />
                     <Button Text="Guardar"
                             HorizontalOptions="FillAndExpand"
-                            Command="{Binding BtnSaveCommand}" />
+                            Command="{Binding BtnSaveCommand}"
+                            CornerRadius="32" />
                 </StackLayout>
             </StackLayout>
         </StackLayout>

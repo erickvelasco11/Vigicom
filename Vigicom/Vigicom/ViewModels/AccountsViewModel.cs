@@ -21,6 +21,7 @@ namespace Vigicom.ViewModels
 
         public IAsyncCommand<Account> MenDeleteAccountCommand { get; set; }
         public IAsyncCommand<Account> MenEditAccountCommand { get; set; }
+        public IAsyncCommand<Account> ItmOptionsCommand { get; set; }
         public IAsyncCommand MenAddNewAccountCommand { get; set; }
 
         public AccountsViewModel()
@@ -34,6 +35,7 @@ namespace Vigicom.ViewModels
             Accounts = new ObservableRangeCollection<Account>();
             MenDeleteAccountCommand = new AsyncCommand<Account>(MenDeleteAccountClick);
             MenEditAccountCommand = new AsyncCommand<Account>(MenEditAccountClick);
+            ItmOptionsCommand = new AsyncCommand<Account>(ItmOptionsClick);
             MenAddNewAccountCommand = new AsyncCommand(MenAddNewAccountClick);
             FillList();
         }
@@ -76,6 +78,20 @@ namespace Vigicom.ViewModels
         private async Task MenAddNewAccountClick()
         {
             await Navigation.PushAsync(new CreateAccountPage());
+        }
+
+        private async Task ItmOptionsClick(Account account)
+        {
+            string action = await Application.Current.MainPage.DisplayActionSheet("Cuenta " + account.Name, "Cancelar", null, "Editar", "Eliminar");
+            switch (action)
+            {
+                case "Editar":
+                    await MenEditAccountClick(account);
+                    break;
+                case "Eliminar":
+                    await MenDeleteAccountClick(account);
+                    break;
+            }
         }
     }
 }

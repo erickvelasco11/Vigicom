@@ -4,11 +4,13 @@
              x:Class="Vigicom.Pages.App">
     <Application.Resources>
         <ResourceDictionary>
-            <Color x:Key="primaryColor">#003884</Color>
+            <Color x:Key="ColorPrimary">#003884</Color>
+            <Color x:Key="ColorPrimaryDark">#303F9F</Color>
+            <Color x:Key="ColorAccent">#cd1313</Color>
             <Color x:Key="mWhite">#FFFFFF</Color>
             <Style TargetType="Button">
                 <Setter Property="BackgroundColor"
-                        Value="{ StaticResource primaryColor }"></Setter>
+                        Value="{ StaticResource ColorPrimary }"></Setter>
                 <Setter Property="TextColor"
                         Value="{ StaticResource mWhite}" />
             </Style>
