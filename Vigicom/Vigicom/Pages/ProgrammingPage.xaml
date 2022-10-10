@@ -116,7 +116,7 @@
                            FontSize="20" />
                 </StackLayout>
             </Frame>
-            <ImageButton Source="ic_assistance.png"
+            <ImageButton Source="ic_btn_siren.png"
                          Grid.Row="5"
                          Grid.Column="0"
                          BackgroundColor="Transparent"
@@ -125,7 +125,7 @@
                          xct:TouchEffect.NativeAnimation="True"
                          Command="{Binding BtnTestSirenCommand}"
                          IsEnabled="{Binding IsBusy}" />
-            <ImageButton Source="ic_assistance.png"
+            <ImageButton Source="ic_btn_sms.png"
                          Grid.Row="5"
                          Grid.Column="1"
                          BackgroundColor="Transparent"

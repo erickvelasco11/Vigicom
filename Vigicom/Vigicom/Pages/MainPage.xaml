@@ -34,23 +34,26 @@
               Padding="32"
               BackgroundColor="WhiteSmoke">
             <Grid.RowDefinitions>
-                <RowDefinition Height="*" />
+                <RowDefinition />
+                <RowDefinition Height="6*" />
+                <RowDefinition />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
-            <ImageButton Source="ic_logo_round.png"
+            <ImageButton Source="ic_panic_button.png"
                          Grid.Column="0"
                          Grid.ColumnSpan="3"
-                         Grid.Row="0"
-                         VerticalOptions="FillAndExpand"
+                         Grid.Row="1"
+                         VerticalOptions="Fill"
+                         HorizontalOptions="Fill"
                          BackgroundColor="Transparent"
-                         CornerRadius="64"
-                         Padding="64"
+                         CornerRadius="256"
+                         Margin="16"
                          xct:TouchEffect.NativeAnimation="True"
                          Command="{Binding BtnSosCommand}"
                          IsEnabled="{Binding IsBusy}" />
             <ImageButton Source="ic_hospital.png"
                          Grid.Column="0"
-                         Grid.Row="1"
+                         Grid.Row="3"
                          VerticalOptions="Center"
                          HorizontalOptions="Center"
                          BackgroundColor="Transparent"
@@ -61,7 +64,7 @@
                          IsEnabled="{Binding IsBusy}" />
             <ImageButton Source="ic_fire.png"
                          Grid.Column="1"
-                         Grid.Row="1"
+                         Grid.Row="3"
                          VerticalOptions="Center"
                          HorizontalOptions="Center"
                          BackgroundColor="Transparent"
@@ -72,7 +75,7 @@
                          IsEnabled="{Binding IsBusy}" />
             <ImageButton Source="ic_assistance.png"
                          Grid.Column="2"
-                         Grid.Row="1"
+                         Grid.Row="3"
                          BackgroundColor="Transparent"
                          VerticalOptions="Center"
                          HorizontalOptions="Center"
