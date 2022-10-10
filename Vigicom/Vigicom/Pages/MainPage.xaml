@@ -4,8 +4,17 @@
              xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
              xmlns:ViewModels="clr-namespace:Vigicom.ViewModels"
              x:Class="Vigicom.Pages.MainPage"
-             x:DataType="ViewModels:MainViewModel"
-             Title="{Binding Title}">
+             x:DataType="ViewModels:MainViewModel">
+    <NavigationPage.TitleView>
+        <StackLayout Orientation="Horizontal">
+            <Image Source="ic_action_logo.png"/>
+            <Label Text="{Binding Title}"
+                   TextColor="White"
+                   HorizontalOptions="FillAndExpand"
+                   HorizontalTextAlignment="Center"
+                   FontSize="22" />
+        </StackLayout>
+    </NavigationPage.TitleView>
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Cuentas"
                      Priority="0"
