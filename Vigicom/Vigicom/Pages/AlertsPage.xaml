@@ -5,21 +5,24 @@
              xmlns:ViewModel="clr-namespace:Vigicom.ViewModels"
              xmlns:views="clr-namespace:Vigicom.Views"
              x:Class="Vigicom.Pages.AlertsPage"
-             Title="Alertas">
+             Title="Números de alertas">
     <ContentPage.BindingContext>
         <ViewModel:AlertsViewModel />
     </ContentPage.BindingContext>
     <ContentPage.Content>
-        <StackLayout>
-            <Grid Padding="16">
+        <StackLayout Padding="16">
+            <Image Source="ic_alerts.png"
+                   HeightRequest="128"
+                   Margin="32" />
+            <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="1.5*" />
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
                 <Entry Grid.Column="0"
                        Grid.Row="0"
-                       Placeholder="Alerta 1"
+                       Placeholder="Número de alerta 1"
                        HorizontalOptions="FillAndExpand"
                        Text="{Binding Number1}" />
                 <Picker Grid.Column="1"
@@ -42,7 +45,7 @@
                              Command="{Binding BtnSend1Command}" />
                 <Entry Grid.Column="0"
                        Grid.Row="1"
-                       Placeholder="Alerta 2"
+                       Placeholder="Número de alerta 2"
                        HorizontalOptions="FillAndExpand"
                        Text="{Binding Number2}" />
                 <Picker Grid.Column="1"
@@ -65,7 +68,7 @@
                              Command="{Binding BtnSend2Command}" />
                 <Entry Grid.Column="0"
                        Grid.Row="2"
-                       Placeholder="Alerta 3"
+                       Placeholder="Número de alerta 3"
                        HorizontalOptions="FillAndExpand"
                        Text="{Binding Number3}" />
                 <Picker Grid.Column="1"
@@ -88,7 +91,7 @@
                              Command="{Binding BtnSend3Command}" />
                 <Entry Grid.Column="0"
                        Grid.Row="3"
-                       Placeholder="Alerta 4"
+                       Placeholder="Número de alerta 4"
                        HorizontalOptions="FillAndExpand"
                        Text="{Binding Number4}" />
                 <Picker Grid.Column="1"
@@ -111,7 +114,7 @@
                              Command="{Binding BtnSend4Command}" />
                 <Entry Grid.Column="0"
                        Grid.Row="4"
-                       Placeholder="Alerta 5"
+                       Placeholder="Número de alerta 5"
                        HorizontalOptions="FillAndExpand"
                        Text="{Binding Number5}" />
                 <Picker Grid.Column="1"
@@ -134,7 +137,7 @@
                              Command="{Binding BtnSend5Command}" />
                 <Entry Grid.Column="0"
                        Grid.Row="5"
-                       Placeholder="Alerta 6"
+                       Placeholder="Número de alerta 6"
                        HorizontalOptions="FillAndExpand"
                        Text="{Binding Number6}" />
                 <Picker Grid.Column="1"
@@ -157,7 +160,7 @@
                              Command="{Binding BtnSend6Command}" />
                 <Entry Grid.Column="0"
                        Grid.Row="6"
-                       Placeholder="Alerta 7"
+                       Placeholder="Número de alerta 7"
                        HorizontalOptions="FillAndExpand"
                        Text="{Binding Number8}" />
                 <Picker Grid.Column="1"
@@ -180,7 +183,7 @@
                              Command="{Binding BtnSend7Command}" />
                 <Entry Grid.Column="0"
                        Grid.Row="7"
-                       Placeholder="Alerta 8"
+                       Placeholder="Número de alerta 8"
                        HorizontalOptions="FillAndExpand"
                        Text="{Binding Number8}" />
                 <Picker Grid.Column="1"

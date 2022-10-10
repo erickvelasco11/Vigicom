@@ -9,25 +9,16 @@
         <ViewModels:UsersViewModel />
     </ContentPage.BindingContext>
     <ContentPage.Content>
-        <Grid Padding="96" ColumnSpacing="32">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto" />
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-            </Grid.RowDefinitions>
-            <Label Grid.Column="0"
-                   Grid.Row="0"
-                   Text="Posición"
-                   FontSize="24"
-                   HorizontalTextAlignment="End" />
-            <Entry Grid.Column="1"
-                   Grid.Row="0"
-                   x:Name="edtPosition"
+        <StackLayout Padding="32,64">
+            <Image Source="ic_accounts.png"
+                   HeightRequest="128"
+                   Margin="0,0,0,32" />
+            <Label Text="Posición"
+                   Padding="4,0"
+                   Margin="0,0,0,-12" />
+            <Entry x:Name="edtPosition"
                    Keyboard="Numeric"
+                   Placeholder="000"
                    Text="{Binding Position}">
                 <Entry.Behaviors>
                     <xct:EventToCommandBehavior EventName="TextChanged"
@@ -35,33 +26,24 @@
                                                 CommandParameter="{Binding Source={x:Reference edtPosition}, Path=Text}" />
                 </Entry.Behaviors>
             </Entry>
-            <Label Grid.Column="0"
-                   Grid.Row="1"
-                   Text="Número"
-                   FontSize="24"
-                   HorizontalTextAlignment="End" />
-            <Entry Grid.Column="1"
-                   Grid.Row="1"
-                   Keyboard="Numeric"
+            <Label Text="Número"
+                   Padding="4,0"
+                   Margin="0,0,0,-12" />
+            <Entry Keyboard="Numeric"
                    MaxLength="10"
+                   Placeholder="3001234567"
                    Text="{Binding Number}" />
-            <Label Grid.Column="0"
-                   Grid.Row="2"
-                   Text="Nombre"
-                   FontSize="24"
-                   HorizontalTextAlignment="End" />
-            <Entry Grid.Column="1"
-                   Grid.Row="2"
-                   Keyboard="Text"
+            <Label Text="Nombre"
+                   Padding="4,0"
+                   Margin="0,0,0,-12" />
+            <Entry Keyboard="Text"
                    MaxLength="15"
+                   Placeholder="Alarma"
                    Text="{Binding Name}"
-                   Margin="0,0,0,96"/>
-            <Button Grid.Column="0"
-                    Grid.Row="3"
-                    Grid.ColumnSpan="2"
-                    Text="Enviar mensaje"
+                   Margin="0,0,0,64" />
+            <Button Text="Enviar mensaje"
                     CornerRadius="32"
                     Command="{Binding BtnSendSmsCommand}" />
-        </Grid>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>
