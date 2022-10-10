@@ -13,96 +13,127 @@
               RowSpacing="32"
               BackgroundColor="WhiteSmoke">
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
                 <RowDefinition Height="*" />
                 <RowDefinition Height="*" />
                 <RowDefinition Height="*" />
-                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-            <Button Grid.Row="0"
-                    Grid.Column="0"
-                    Grid.ColumnSpan="2"
-                    Text="Clave programación"
-                    HorizontalOptions="Center"
-                    CornerRadius="8"
-                    FontSize="Large"
-                    xct:ShadowEffect.Color="Black"
-                    xct:ShadowEffect.Radius="5"
-                    Command="{Binding BtnPasswordCommand}"
-                    IsEnabled="{Binding IsBusy}" />
-            <Button Grid.Row="1"
-                    Grid.Column="0"
-                    Grid.ColumnSpan="2"
-                    Text="Usuarios"
-                    FontSize="28"
-                    BorderColor="#003884"
-                    BorderWidth="3"
-                    BackgroundColor="White"
-                    TextColor="Black"
-                    xct:ShadowEffect.Color="Black"
-                    xct:ShadowEffect.Radius="5"
-                    CornerRadius="16"
-                    Command="{Binding BtnUsersCommand}" />
-            <Button Grid.Row="2"
-                    Grid.Column="0"
-                    Grid.ColumnSpan="2"
-                    Text="Administradores"
-                    FontSize="28"
-                    BorderColor="#003884"
-                    BorderWidth="3"
-                    BackgroundColor="White"
-                    TextColor="Black"
-                    xct:ShadowEffect.Color="Black"
-                    xct:ShadowEffect.Radius="5"
-                    CornerRadius="16"
-                    Command="{Binding BtnAdministratorsCommand}" />
-            <Button Grid.Row="3"
-                    Grid.Column="0"
-                    Grid.ColumnSpan="2"
-                    Text="ID de Alarma"
-                    FontSize="28"
-                    BorderColor="#003884"
-                    BorderWidth="3"
-                    BackgroundColor="White"
-                    TextColor="Black"
-                    xct:ShadowEffect.Color="Black"
-                    xct:ShadowEffect.Radius="5"
-                    CornerRadius="16"
-                    Command="{Binding BtnIdAlarmCommand}" />
-            <Button Grid.Row="4"
-                    Grid.Column="0"
-                    Grid.ColumnSpan="2"
-                    Text="Tiempos de Sirena"
-                    FontSize="28"
-                    BorderColor="#003884"
-                    BorderWidth="3"
-                    BackgroundColor="White"
-                    TextColor="Black"
-                    xct:ShadowEffect.Color="Black"
-                    xct:ShadowEffect.Radius="5"
-                    CornerRadius="16"
-                    Command="{Binding BtnSirenTimesCommand}" />
-            <Button Grid.Row="5"
-                    Grid.Column="0"
-                    Text="TEST Sirenas"
-                    HorizontalOptions="FillAndExpand"
-                    CornerRadius="8"
-                    FontSize="Large"
-                    xct:ShadowEffect.Color="Black"
-                    xct:ShadowEffect.Radius="5"
-                    Command="{Binding BtnTestSirenCommand}"
-                    IsEnabled="{Binding IsBusy}" />
-            <Button Grid.Row="5"
-                    Grid.Column="1"
-                    Text="TEST SMS"
-                    HorizontalOptions="FillAndExpand"
-                    CornerRadius="8"
-                    FontSize="Large"
-                    xct:ShadowEffect.Color="Black"
-                    xct:ShadowEffect.Radius="5"
-                    Command="{Binding BtnTestSmsCommand}"
-                    IsEnabled="{Binding IsBusy}" />
+            <Frame Grid.Row="0"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="2"
+                   BackgroundColor="White"
+                   xct:ShadowEffect.Color="Black"
+                   xct:ShadowEffect.Radius="5"
+                   xct:TouchEffect.NativeAnimation="True"
+                   CornerRadius="8">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding BtnUsersCommand}" />
+                </Frame.GestureRecognizers>
+                <StackLayout VerticalOptions="CenterAndExpand">
+                    <Label Text="Usuarios"
+                           FontSize="38"
+                           TextColor="Black" />
+                    <Label Text="Celulares que pueden activar la alarma"
+                           FontSize="20" />
+                </StackLayout>
+            </Frame>
+            <Frame Grid.Row="1"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="2"
+                   BackgroundColor="White"
+                   xct:ShadowEffect.Color="Black"
+                   xct:ShadowEffect.Radius="5"
+                   xct:TouchEffect.NativeAnimation="True"
+                   CornerRadius="8">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding BtnAdministratorsCommand}" />
+                </Frame.GestureRecognizers>
+                <StackLayout VerticalOptions="CenterAndExpand">
+                    <Label Text="Alertas"
+                           FontSize="38"
+                           TextColor="Black" />
+                    <Label Text="Celulares a los que se envían alertas"
+                           FontSize="20" />
+                </StackLayout>
+            </Frame>
+            <Frame Grid.Row="2"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="2"
+                   BackgroundColor="White"
+                   xct:ShadowEffect.Color="Black"
+                   xct:ShadowEffect.Radius="5"
+                   xct:TouchEffect.NativeAnimation="True"
+                   CornerRadius="16">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding BtnIdAlarmCommand}" />
+                </Frame.GestureRecognizers>
+                <StackLayout VerticalOptions="CenterAndExpand">
+                    <Label Text="ID de Alarma"
+                           FontSize="38"
+                           TextColor="Black" />
+                    <Label Text="Mensaje de identificación de la alarma"
+                           FontSize="20" />
+                </StackLayout>
+            </Frame>
+            <Frame Grid.Row="3"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="2"
+                   BackgroundColor="White"
+                   xct:ShadowEffect.Color="Black"
+                   xct:ShadowEffect.Radius="5"
+                   xct:TouchEffect.NativeAnimation="True"
+                   CornerRadius="8">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding BtnSirenTimesCommand}" />
+                </Frame.GestureRecognizers>
+                <StackLayout VerticalOptions="CenterAndExpand">
+                    <Label Text="Tiempos"
+                           FontSize="38"
+                           TextColor="Black" />
+                    <Label Text="Tiempo de activación de las sirenas"
+                           FontSize="20" />
+                </StackLayout>
+            </Frame>
+            <Frame Grid.Row="4"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="2"
+                   BackgroundColor="White"
+                   CornerRadius="8"
+                   xct:ShadowEffect.Color="Black"
+                   xct:ShadowEffect.Radius="5"
+                   xct:TouchEffect.NativeAnimation="True"
+                   IsEnabled="{Binding IsBusy}">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding BtnPasswordCommand}" />
+                </Frame.GestureRecognizers>
+                <StackLayout VerticalOptions="CenterAndExpand">
+                    <Label Text="Clave Alarma"
+                           FontSize="38"
+                           TextColor="Black" />
+                    <Label Text="Clave para programar la alarma"
+                           FontSize="20" />
+                </StackLayout>
+            </Frame>
+            <ImageButton Source="ic_assistance.png"
+                         Grid.Row="5"
+                         Grid.Column="0"
+                         BackgroundColor="Transparent"
+                         HorizontalOptions="Center"
+                         CornerRadius="8"
+                         xct:TouchEffect.NativeAnimation="True"
+                         Command="{Binding BtnTestSirenCommand}"
+                         IsEnabled="{Binding IsBusy}" />
+            <ImageButton Source="ic_assistance.png"
+                         Grid.Row="5"
+                         Grid.Column="1"
+                         BackgroundColor="Transparent"
+                         HorizontalOptions="Center"
+                         CornerRadius="8"
+                         xct:TouchEffect.NativeAnimation="True"
+                         Command="{Binding BtnTestSmsCommand}"
+                         IsEnabled="{Binding IsBusy}" />
         </Grid>
     </ContentPage.Content>
 </ContentPage>
