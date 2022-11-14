@@ -10,7 +10,7 @@
     </ContentPage.BindingContext>
     <ContentPage.Content>
         <Grid Padding="32"
-              RowSpacing="32"
+              RowSpacing="16"
               BackgroundColor="WhiteSmoke">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
@@ -23,44 +23,47 @@
             <Frame Grid.Row="0"
                    Grid.Column="0"
                    Grid.ColumnSpan="2"
+                   Padding="16,0"
                    BackgroundColor="White"
                    xct:ShadowEffect.Color="Black"
                    xct:ShadowEffect.Radius="5"
                    xct:TouchEffect.NativeAnimation="True"
-                   CornerRadius="8">
+                   CornerRadius="16">
                 <Frame.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding BtnUsersCommand}" />
                 </Frame.GestureRecognizers>
                 <StackLayout VerticalOptions="CenterAndExpand">
                     <Label Text="Usuarios"
-                           FontSize="38"
+                           FontSize="30"
                            TextColor="Black" />
                     <Label Text="Celulares que pueden activar la alarma"
-                           FontSize="20" />
+                           FontSize="16" />
                 </StackLayout>
             </Frame>
             <Frame Grid.Row="1"
                    Grid.Column="0"
                    Grid.ColumnSpan="2"
+                   Padding="16,0"
                    BackgroundColor="White"
                    xct:ShadowEffect.Color="Black"
                    xct:ShadowEffect.Radius="5"
                    xct:TouchEffect.NativeAnimation="True"
-                   CornerRadius="8">
+                   CornerRadius="16">
                 <Frame.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding BtnAdministratorsCommand}" />
                 </Frame.GestureRecognizers>
                 <StackLayout VerticalOptions="CenterAndExpand">
                     <Label Text="Alertas"
-                           FontSize="38"
+                           FontSize="30"
                            TextColor="Black" />
                     <Label Text="Celulares a los que se envían alertas"
-                           FontSize="20" />
+                           FontSize="16" />
                 </StackLayout>
             </Frame>
             <Frame Grid.Row="2"
                    Grid.Column="0"
                    Grid.ColumnSpan="2"
+                   Padding="16,0"
                    BackgroundColor="White"
                    xct:ShadowEffect.Color="Black"
                    xct:ShadowEffect.Radius="5"
@@ -71,36 +74,38 @@
                 </Frame.GestureRecognizers>
                 <StackLayout VerticalOptions="CenterAndExpand">
                     <Label Text="ID de Alarma"
-                           FontSize="38"
+                           FontSize="30"
                            TextColor="Black" />
                     <Label Text="Mensaje de identificación de la alarma"
-                           FontSize="20" />
+                           FontSize="16" />
                 </StackLayout>
             </Frame>
             <Frame Grid.Row="3"
                    Grid.Column="0"
                    Grid.ColumnSpan="2"
+                   Padding="16,0"
                    BackgroundColor="White"
                    xct:ShadowEffect.Color="Black"
                    xct:ShadowEffect.Radius="5"
                    xct:TouchEffect.NativeAnimation="True"
-                   CornerRadius="8">
+                   CornerRadius="16">
                 <Frame.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding BtnSirenTimesCommand}" />
                 </Frame.GestureRecognizers>
                 <StackLayout VerticalOptions="CenterAndExpand">
                     <Label Text="Tiempos"
-                           FontSize="38"
+                           FontSize="30"
                            TextColor="Black" />
                     <Label Text="Tiempo de activación de las sirenas"
-                           FontSize="20" />
+                           FontSize="16" />
                 </StackLayout>
             </Frame>
             <Frame Grid.Row="4"
                    Grid.Column="0"
                    Grid.ColumnSpan="2"
+                   Padding="16,0"
                    BackgroundColor="White"
-                   CornerRadius="8"
+                   CornerRadius="16"
                    xct:ShadowEffect.Color="Black"
                    xct:ShadowEffect.Radius="5"
                    xct:TouchEffect.NativeAnimation="True"
@@ -110,10 +115,10 @@
                 </Frame.GestureRecognizers>
                 <StackLayout VerticalOptions="CenterAndExpand">
                     <Label Text="Clave Alarma"
-                           FontSize="38"
+                           FontSize="30"
                            TextColor="Black" />
                     <Label Text="Clave para programar la alarma"
-                           FontSize="20" />
+                           FontSize="16" />
                 </StackLayout>
             </Frame>
             <ImageButton Source="ic_btn_siren.png"
@@ -123,6 +128,8 @@
                          HorizontalOptions="Center"
                          CornerRadius="8"
                          xct:TouchEffect.NativeAnimation="True"
+                         xct:ShadowEffect.Color="Black"
+                         xct:ShadowEffect.Radius="4"
                          Command="{Binding BtnTestSirenCommand}"
                          IsEnabled="{Binding IsBusy}" />
             <ImageButton Source="ic_btn_sms.png"
@@ -132,6 +139,8 @@
                          HorizontalOptions="Center"
                          CornerRadius="8"
                          xct:TouchEffect.NativeAnimation="True"
+                         xct:ShadowEffect.Color="Black"
+                         xct:ShadowEffect.Radius="4"
                          Command="{Binding BtnTestSmsCommand}"
                          IsEnabled="{Binding IsBusy}" />
         </Grid>

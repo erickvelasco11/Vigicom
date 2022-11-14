@@ -14,7 +14,7 @@
                    Margin="64" />
             <StackLayout Orientation="Vertical"
                          Margin="16">
-                <Label Text="Nombre"
+                <Label Text="Nombre del panel"
                        Padding="4,0"
                        Margin="0,-12"/>
                 <Entry Keyboard="Text"
@@ -35,17 +35,10 @@
                        Keyboard="Numeric"
                        Margin="0,0,0,16"
                        Text="{Binding UserPassword}" />
-                <StackLayout Orientation="Horizontal"
-                             HorizontalOptions="Fill">
-                    <Button Text="Deshacer"
-                            HorizontalOptions="FillAndExpand"
-                            Command="{Binding BtnClearCommand}"
-                            CornerRadius="32" />
-                    <Button Text="Guardar"
-                            HorizontalOptions="FillAndExpand"
-                            Command="{Binding BtnSaveCommand}"
-                            CornerRadius="32" />
-                </StackLayout>
+                <Button Text="Guardar"
+                        HorizontalOptions="FillAndExpand"
+                        Command="{Binding BtnSaveCommand}"
+                        CornerRadius="32" />
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>

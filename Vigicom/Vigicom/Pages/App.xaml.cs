@@ -8,7 +8,6 @@ namespace Vigicom.Pages
         public App()
         {
             InitializeComponent();
-
             MainPage = new NavigationPage(new InitPage());
         }
 

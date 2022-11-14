@@ -11,7 +11,7 @@
     <ContentPage.Content>
         <StackLayout Padding="16">
             <Image Source="ic_alerts.png"
-                   HeightRequest="128"
+                   HeightRequest="96"
                    Margin="32" />
             <Grid>
                 <Grid.ColumnDefinitions>

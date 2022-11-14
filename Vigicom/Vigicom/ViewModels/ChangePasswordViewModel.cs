@@ -30,8 +30,14 @@ namespace Vigicom.ViewModels
                 return;
             }
 
+            if (password.Length != 4)
+            {
+                await DisplayAlert("Campos incompleto", "La contraseña debe ser de 4 caracteres.", "Entendido");
+                return;
+            }
+
             IsBusy = false;
-            await Tools.SendSMS("Cambio de contraseña de alarma.", "*AP02,{UserPassword}," + password);
+            await Tools.SendSMS("Cambio de contraseña de alarma.", "*AP05,{UserPassword}," + password);
             Preferences.Set(Constants.KEY_ALARM_PASSWORD, password);
             IsBusy = true;
         }

@@ -11,7 +11,7 @@
     <ContentPage.Content>
         <StackLayout Padding="32,64">
             <Image Source="ic_accounts.png"
-                   HeightRequest="128"
+                   HeightRequest="96"
                    Margin="0,0,0,64" />
             <Label Text="Posición"
                    Padding="4,0"

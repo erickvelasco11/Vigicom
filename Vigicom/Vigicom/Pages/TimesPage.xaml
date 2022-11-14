@@ -9,7 +9,7 @@
     <ContentPage.Content>
         <StackLayout Padding="64">
             <Image Source="ic_times.png"
-                   HeightRequest="128"
+                   HeightRequest="96"
                    Margin="0,0,0,64" />
             <Grid ColumnSpacing="32" RowSpacing="32">
                 <Grid.RowDefinitions>
@@ -40,7 +40,7 @@
                                                     CommandParameter="{Binding Source={x:Reference edtSiren}, Path=Text}" />
                     </Entry.Behaviors>
                 </Entry>
-                <Label Text="Altavoz: Vigicom Voz (seg):"
+                <Label Text="Perifoneo (seg.):"
                        Grid.Column="0"
                        Grid.Row="1"
                        FontSize="20"
@@ -52,7 +52,7 @@
                        Text="{Binding VoiceTime}"
                        Grid.Column="1"
                        Grid.Row="1"
-                       MaxLength="2"
+                       MaxLength="3"
                        Keyboard="Numeric">
                     <Entry.Behaviors>
                         <xct:EventToCommandBehavior EventName="TextChanged"

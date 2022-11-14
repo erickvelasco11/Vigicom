@@ -11,8 +11,8 @@ namespace Vigicom.ViewModels
     public class TimesViewModel : MyBaseViewModel
     {
         public IAsyncCommand BtnSendSmsCommand { get; set; }
-        public IAsyncCommand<string> EdtSirenTextChangedCommand { get; set; }
-        public IAsyncCommand<string> EdtVoiceTextChangedCommand { get; set; }
+        public MvvmHelpers.Commands.Command<string> EdtSirenTextChangedCommand { get; set; }
+        public Xamarin.Forms.Command<string> EdtVoiceTextChangedCommand { get; set; }
 
         public TimesViewModel() { }
 
@@ -20,75 +20,69 @@ namespace Vigicom.ViewModels
         {
             Navigation = navigation;
             BtnSendSmsCommand = new AsyncCommand(BtnSendSmsClick);
-            EdtSirenTextChangedCommand = new AsyncCommand<string>(EdtSirenTextChangedClick);
-            EdtVoiceTextChangedCommand = new AsyncCommand<string>(EdtVoiceTextChangedClick);
+            EdtSirenTextChangedCommand = new MvvmHelpers.Commands.Command<string>(EdtSirenTextChangedClick);
+            EdtVoiceTextChangedCommand = new Xamarin.Forms.Command<string>(EdtVoiceTextChangedClick);
             IsBusy = true;
-            SirenTime = Preferences.Get(Constants.KEY_TIMES_SIREN, "");
-            VoiceTime = Preferences.Get(Constants.KEY_TIMES_VOICE, "");
+            SirenTime = Preferences.Get(Constants.KEY_TIMES_SIREN, 0);
+            VoiceTime = Preferences.Get(Constants.KEY_TIMES_VOICE, 0);
         }
 
-        private async Task EdtSirenTextChangedClick(string newValue)
+        private void EdtSirenTextChangedClick(string newValue)
         {
-            SirenTime = SirenTime.Replace("-", "");
-            SirenTime = SirenTime.Replace(".", "");
-            SirenTime = SirenTime.Replace(",", "");
             if (int.TryParse(newValue, out int intValue))
             {
                 if (intValue < 0)
                 {
-                    SirenTime = "0";
+                    SirenTime = 0;
                 }
 
                 if (intValue > 255)
                 {
-                    SirenTime = "255";
+                    SirenTime = 255;
                 }
             }
         }
 
-        private async Task EdtVoiceTextChangedClick(string newValue)
+        private void EdtVoiceTextChangedClick(string newValue)
         {
-            SirenTime = SirenTime.Replace("-", "");
-            SirenTime = SirenTime.Replace(".", "");
-            SirenTime = SirenTime.Replace(",", "");
             if (int.TryParse(newValue, out int intValue))
             {
                 if (intValue < 0)
                 {
-                    SirenTime = "0";
+                    SirenTime = 0;
                 }
 
-                if (intValue > 99)
+                if (intValue > 255)
                 {
-                    SirenTime = "99";
+                    SirenTime = 255;
                 }
             }
         }
 
         private async Task BtnSendSmsClick()
         {
-            if (sirenTime == "" || voiceTime == "")
+            if (sirenTime == 0)
             {
-                await DisplayAlert("Campos vacíos", "Todos los campos deben ser diligenciados.", "Entendido");
+                await DisplayAlert("Campos vacíos", "Debes diligenciar al menos el campo sirena.", "Entendido");
                 return;
             }
 
             IsBusy = false;
-            await Tools.SendSMS("Cambio de data de los tiempos.", "*AP04,{UserPassword}," + sirenTime + "," + voiceTime);
+            await Tools.SendSMS("Cambio de data de los tiempos.", "*AP04,{UserPassword}," + sirenTime.ToString("D3") + "," + voiceTime.ToString("D3"));
             Preferences.Set(Constants.KEY_TIMES_SIREN, sirenTime);
             Preferences.Set(Constants.KEY_TIMES_VOICE, voiceTime);
             IsBusy = true;
         }
 
-        private string sirenTime = "";
-        public string SirenTime
+        private int sirenTime = 0;
+        public int SirenTime
         {
             get => sirenTime;
             set => SetProperty(ref sirenTime, value);
         }
 
-        private string voiceTime = "";
-        public string VoiceTime
+        private int voiceTime = 0;
+        public int VoiceTime
         {
             get => voiceTime;
             set => SetProperty(ref voiceTime, value);

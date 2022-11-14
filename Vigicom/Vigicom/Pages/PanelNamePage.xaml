@@ -8,7 +8,7 @@
     <ContentPage.Content>
         <StackLayout Padding="64">
             <Image Source="ic_panel.png"
-                   HeightRequest="128"
+                   HeightRequest="96"
                    Margin="0,0,0,64" />
             <Label Text="Nombre del panel de la alarma"
                    Padding="4,0"
