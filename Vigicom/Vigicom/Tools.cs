@@ -10,11 +10,19 @@ namespace Vigicom
 {
     public class Tools
     {
-        public static async Task SendSMS(string text, string sms)
+        public static async Task<bool> SendSMS(string text, string sms)
         {
+            var alarmPassword = Preferences.Get(Constants.KEY_ALARM_PASSWORD, "");
+            if (alarmPassword == string.Empty)
+            {
+                return false;
+            }
+
             var currentAccountId = Preferences.Get(Constants.KEY_CURRENT_ACCOUNT_ID, Guid.Empty.ToString());
             var currentAccount = await DbService.Instance.Single<Account>(Guid.Parse(currentAccountId));
             sms = sms.Replace("{UserPassword}", currentAccount.UserPassword);
+            sms = sms.Replace("{AlarmPassword}", alarmPassword);
+
             var register = new Historical
             {
                 Id = Guid.NewGuid(),
@@ -24,6 +32,7 @@ namespace Vigicom
             };
             await DbService.Instance.Add(register);
             await ConnectivityService.Instance.SendSms(sms, currentAccount.SimNumber);
+            return true;
         }
 
         public static async Task CallNumber(string text)

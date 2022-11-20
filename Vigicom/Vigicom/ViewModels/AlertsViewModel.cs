@@ -55,35 +55,42 @@ namespace Vigicom.ViewModels
 
         private async Task BtnSend1Click()
         {
-            SendSms(Number1, Type1, 1);
+            await SendSms(Number1, Type1, 1);
         }
+
         private async Task BtnSend2Click()
         {
-            SendSms(Number2, Type2, 2);
+            await SendSms(Number2, Type2, 2);
         }
+
         private async Task BtnSend3Click()
         {
-            SendSms(Number3, Type3, 3);
+            await SendSms(Number3, Type3, 3);
         }
+
         private async Task BtnSend4Click()
         {
-            SendSms(Number4, Type4, 4);
+            await SendSms(Number4, Type4, 4);
         }
+
         private async Task BtnSend5Click()
         {
-            SendSms(Number5, Type5, 5);
+            await SendSms(Number5, Type5, 5);
         }
+
         private async Task BtnSend6Click()
         {
-            SendSms(Number6, Type6, 6);
+            await SendSms(Number6, Type6, 6);
         }
+
         private async Task BtnSend7Click()
         {
-            SendSms(Number7, Type7, 7);
+            await SendSms(Number7, Type7, 7);
         }
+
         private async Task BtnSend8Click()
         {
-            SendSms(Number8, Type8, 8);
+            await SendSms(Number8, Type8, 8);
         }
 
         private string number1 = "";
@@ -198,7 +205,7 @@ namespace Vigicom.ViewModels
             set => SetProperty(ref type8, value);
         }
 
-        private async void SendSms(string number, string type, int position)
+        private async Task SendSms(string number, string type, int position)
         {
             if (number == "" || type == "")
             {
@@ -213,9 +220,15 @@ namespace Vigicom.ViewModels
             }
 
             IsBusy = false;
-            await Tools.SendSMS("Cambio de alerta posición " + position, "*AP01,{UserPassword}," + position + "," + number + "," + type.Substring(0, 1));
-            Preferences.Set(Constants.KEY_ALERT_NUMBER + position, number);
-            Preferences.Set(Constants.KEY_ALERT_TYPE + position, type);
+            if (await Tools.SendSMS("Cambio de alerta posición " + position, "*AP01,{AlarmPassword}," + position + "," + number + "," + type.Substring(0, 1)))
+            {
+                Preferences.Set(Constants.KEY_ALERT_NUMBER + position, number);
+                Preferences.Set(Constants.KEY_ALERT_TYPE + position, type);
+            }
+            else
+            {
+                await DisplayAlert("Error", "Clave de programación no configurada.", "Entendido");
+            }
             IsBusy = true;
         }
     }

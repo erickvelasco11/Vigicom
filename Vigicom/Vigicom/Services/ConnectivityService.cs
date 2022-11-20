@@ -1,5 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 
 using Xamarin.Essentials;
 
@@ -19,13 +18,9 @@ namespace Vigicom.Services
                 var message = new SmsMessage(messageText, new[] { recipient });
                 await Sms.ComposeAsync(message);
             }
-            catch (FeatureNotSupportedException ex)
+            catch
             {
-                // Sms is not supported on this device.
-            }
-            catch (Exception ex)
-            {
-                // Other error has occurred.
+                throw;
             }
         }
 
@@ -35,17 +30,9 @@ namespace Vigicom.Services
             {
                 PhoneDialer.Open(number);
             }
-            catch (ArgumentNullException anEx)
+            catch
             {
-                // Number was null or white space
-            }
-            catch (FeatureNotSupportedException ex)
-            {
-                // Phone Dialer is not supported on this device.
-            }
-            catch (Exception ex)
-            {
-                // Other error has occurred.
+                throw;
             }
         }
     }

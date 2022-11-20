@@ -11,7 +11,7 @@ namespace Vigicom.ViewModels
     public class UsersViewModel : MyBaseViewModel
     {
         public IAsyncCommand BtnSendSmsCommand { get; set; }
-        public IAsyncCommand<string> EdtPositionTextChangedCommand { get; set; }
+        public MvvmHelpers.Commands.Command<string> EdtPositionTextChangedCommand { get; set; }
 
         public UsersViewModel() { }
 
@@ -19,14 +19,14 @@ namespace Vigicom.ViewModels
         {
             Navigation = navigation;
             BtnSendSmsCommand = new AsyncCommand(BtnSendSmsClick);
-            EdtPositionTextChangedCommand = new AsyncCommand<string>(EdtPositionTextChangedClick);
+            EdtPositionTextChangedCommand = new MvvmHelpers.Commands.Command<string>(EdtPositionTextChangedClick);
             IsBusy = true;
             Position = Preferences.Get(Constants.KEY_USERS_POSITION, "");
             Number = Preferences.Get(Constants.KEY_USERS_NUMBER, "");
             Name = Preferences.Get(Constants.KEY_USERS_NAME, "");
         }
 
-        private async Task EdtPositionTextChangedClick(string newValue)
+        private void EdtPositionTextChangedClick(string newValue)
         {
             Position = Position.Replace("-", "");
             Position = Position.Replace(".", "");
@@ -60,10 +60,16 @@ namespace Vigicom.ViewModels
             }
 
             IsBusy = false;
-            await Tools.SendSMS("Cambio de data del usuario", "*AP03,{UserPassword}," + position + "," + number + "," + name);
-            Preferences.Set(Constants.KEY_USERS_POSITION, position);
-            Preferences.Set(Constants.KEY_USERS_NUMBER, number);
-            Preferences.Set(Constants.KEY_USERS_NAME, name);
+            if (await Tools.SendSMS("Cambio de data del usuario", "*AP03,{AlarmPassword}," + position + "," + number + "," + name))
+            {
+                Preferences.Set(Constants.KEY_USERS_POSITION, position);
+                Preferences.Set(Constants.KEY_USERS_NUMBER, number);
+                Preferences.Set(Constants.KEY_USERS_NAME, name);
+            }
+            else
+            {
+                await DisplayAlert("Error", "Clave de programación no configurada.", "Entendido");
+            }
             IsBusy = true;
         }
 

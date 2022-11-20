@@ -19,24 +19,19 @@ namespace Vigicom.ViewModels
             this.Navigation = navigation;
         }
 
-        public void GoToMainPage()
+        public async void GoToMainPage()
         {
-            Task.Run(async () =>
+            await Task.Delay(2000);
+            if (Preferences.Get(Constants.KEY_CURRENT_ACCOUNT_ID, Guid.Empty.ToString()) != Guid.Empty.ToString())
             {
-                Thread.Sleep(2000);
-            }).ContinueWith(async task =>
+                await Navigation.PushAsync(new MainPage(), true);
+            }
+            else
             {
-                if (Preferences.Get(Constants.KEY_CURRENT_ACCOUNT_ID, Guid.Empty.ToString()) != Guid.Empty.ToString())
-                {
-                    await Navigation.PushAsync(new MainPage(), true);
-                }
-                else
-                {
-                    await Navigation.PushAsync(new CreateAccountPage(), true);
-                }
+                await Navigation.PushAsync(new CreateAccountPage(), true);
+            }
 
-                Navigation.RemovePage(Navigation.NavigationStack.First());
-            }, TaskScheduler.FromCurrentSynchronizationContext());
+            Navigation.RemovePage(Navigation.NavigationStack.First());
         }
     }
 }

@@ -31,8 +31,14 @@ namespace Vigicom.ViewModels
             }
 
             IsBusy = false;
-            await Tools.SendSMS("Cambio de nombre del panel.", "*AP02,{UserPassword}," + panelName);
-            Preferences.Set(Constants.KEY_PANEL_NAME, panelName);
+            if (await Tools.SendSMS("Cambio de nombre del panel.", "*AP02,{AlarmPassword}," + panelName))
+            {
+                Preferences.Set(Constants.KEY_PANEL_NAME, panelName);
+            }
+            else
+            {
+                await DisplayAlert("Error", "Clave de programación no configurada.", "Entendido");
+            }
             IsBusy = true;
         }
 

@@ -68,9 +68,15 @@ namespace Vigicom.ViewModels
             }
 
             IsBusy = false;
-            await Tools.SendSMS("Cambio de data de los tiempos.", "*AP04,{UserPassword}," + sirenTime.ToString("D3") + "," + voiceTime.ToString("D3"));
-            Preferences.Set(Constants.KEY_TIMES_SIREN, sirenTime);
-            Preferences.Set(Constants.KEY_TIMES_VOICE, voiceTime);
+            if (await Tools.SendSMS("Cambio de data de los tiempos.", "*AP04,{AlarmPassword}," + sirenTime.ToString("D3") + "," + voiceTime.ToString("D3")))
+            {
+                Preferences.Set(Constants.KEY_TIMES_SIREN, sirenTime);
+                Preferences.Set(Constants.KEY_TIMES_VOICE, voiceTime);
+            }
+            else
+            {
+                await DisplayAlert("Error", "Clave de programación no configurada.", "Entendido");
+            }
             IsBusy = true;
         }
 

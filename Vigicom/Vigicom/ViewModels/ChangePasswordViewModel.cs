@@ -37,8 +37,14 @@ namespace Vigicom.ViewModels
             }
 
             IsBusy = false;
-            await Tools.SendSMS("Cambio de contraseña de alarma.", "*AP05,{UserPassword}," + password);
-            Preferences.Set(Constants.KEY_ALARM_PASSWORD, password);
+            if (await Tools.SendSMS("Cambio de contraseña de alarma.", "*AP05,{AlarmPassword}," + password))
+            {
+                Preferences.Set(Constants.KEY_ALARM_PASSWORD, password);
+            }
+            else
+            {
+                await DisplayAlert("Error", "Clave de programación no configurada.", "Entendido");
+            }
             IsBusy = true;
         }
 

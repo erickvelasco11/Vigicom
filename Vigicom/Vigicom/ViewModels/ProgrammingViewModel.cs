@@ -64,14 +64,20 @@ namespace Vigicom.ViewModels
         private async Task BtnTestSirenClick()
         {
             IsBusy = false;
-            await Tools.SendSMS("Prueba Sirena.", "*AP12,{UserPassword},1");
+            if(!await Tools.SendSMS("Prueba Sirena.", "*AP12,{AlarmPassword},1"))
+            {
+                await DisplayAlert("Error", "Clave de programación no configurada.", "Entendido");
+            }
             IsBusy = true;
         }
 
         private async Task BtnTestSmsClick()
         {
             IsBusy = false;
-            await Tools.SendSMS("Prueba SMS.", "*AP12,{UserPassword},2");
+            if(!await Tools.SendSMS("Prueba SMS.", "*AP12,{AlarmPassword},2"))
+            {
+                await DisplayAlert("Error", "Clave de programación no configurada.", "Entendido");
+            }
             IsBusy = true;
         }
     }

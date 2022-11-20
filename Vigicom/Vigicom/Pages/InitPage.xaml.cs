@@ -7,12 +7,18 @@ namespace Vigicom.Pages
 {
     public partial class InitPage : ContentPage
     {
+        private readonly InitViewModel viewModel;
+
         public InitPage()
         {
             InitializeComponent();
-            var viewModel = new InitViewModel(Navigation);
+            viewModel = new InitViewModel(Navigation);
             BindingContext = viewModel;
+        }
 
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
             viewModel.GoToMainPage();
         }
     }

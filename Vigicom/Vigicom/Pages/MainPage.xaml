@@ -47,7 +47,7 @@
                          HorizontalOptions="Fill"
                          BackgroundColor="Transparent"
                          CornerRadius="256"
-                         Margin="32"
+                         Margin="64"
                          xct:TouchEffect.NativeAnimation="True"
                          Command="{Binding BtnSosCommand}"
                          IsEnabled="{Binding IsBusy}" />

@@ -114,7 +114,7 @@
                     <TapGestureRecognizer Command="{Binding BtnPasswordCommand}" />
                 </Frame.GestureRecognizers>
                 <StackLayout VerticalOptions="CenterAndExpand">
-                    <Label Text="Clave Alarma"
+                    <Label Text="Clave Programación"
                            FontSize="30"
                            TextColor="Black" />
                     <Label Text="Clave para programar la alarma"
