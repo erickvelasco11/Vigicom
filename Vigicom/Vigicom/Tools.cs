@@ -13,7 +13,7 @@ namespace Vigicom
         public static async Task<bool> SendSMS(string text, string sms)
         {
             var alarmPassword = Preferences.Get(Constants.KEY_ALARM_PASSWORD, "");
-            if (alarmPassword == string.Empty)
+            if (alarmPassword == string.Empty && sms.Contains("{AlarmPassword}"))
             {
                 return false;
             }
