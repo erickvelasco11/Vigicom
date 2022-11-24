@@ -10,6 +10,7 @@ using Vigicom.Models;
 using Vigicom.Pages;
 using Vigicom.Services;
 
+using Xamarin.CommunityToolkit.Extensions;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 
@@ -19,8 +20,6 @@ namespace Vigicom.ViewModels
     {
         public ObservableRangeCollection<Account> Accounts { get; set; }
 
-        public IAsyncCommand<Account> MenDeleteAccountCommand { get; set; }
-        public IAsyncCommand<Account> MenEditAccountCommand { get; set; }
         public IAsyncCommand<Account> ItmOptionsCommand { get; set; }
         public IAsyncCommand MenAddNewAccountCommand { get; set; }
 
@@ -33,8 +32,6 @@ namespace Vigicom.ViewModels
         {
             Navigation = navigation;
             Accounts = new ObservableRangeCollection<Account>();
-            MenDeleteAccountCommand = new AsyncCommand<Account>(MenDeleteAccountClick);
-            MenEditAccountCommand = new AsyncCommand<Account>(MenEditAccountClick);
             ItmOptionsCommand = new AsyncCommand<Account>(ItmOptionsClick);
             MenAddNewAccountCommand = new AsyncCommand(MenAddNewAccountClick);
             FillList();
@@ -44,6 +41,32 @@ namespace Vigicom.ViewModels
         {
             var accounts = await DbService.Instance.GetAll<Account>();
             Accounts.AddRange(accounts);
+        }
+
+        private async Task MenAddNewAccountClick()
+        {
+            await Navigation.PushAsync(new CreateAccountPage());
+        }
+
+        private async Task ItmOptionsClick(Account account)
+        {
+            var popup = new AccountMenuPopup();
+            string action = (await Application.Current.MainPage.Navigation.ShowPopupAsync(popup)).ToString();
+            //string action = await Application.Current.MainPage.DisplayActionSheet("Cuenta " + account.Name, "Cancelar", null, "Editar", "Eliminar");
+            switch (action)
+            {
+                case "Editar":
+                    await MenEditAccountClick(account);
+                    break;
+                case "Eliminar":
+                    await MenDeleteAccountClick(account);
+                    break;
+            }
+        }
+
+        private async Task MenEditAccountClick(Account account)
+        {
+            await Navigation.PushAsync(new CreateAccountPage(account));
         }
 
         private async Task MenDeleteAccountClick(Account account)
@@ -67,30 +90,6 @@ namespace Vigicom.ViewModels
                 {
                     Preferences.Set(Constants.KEY_CURRENT_ACCOUNT_ID, Accounts.First().Id.ToString());
                 }
-            }
-        }
-
-        private async Task MenEditAccountClick(Account account)
-        {
-            await Navigation.PushAsync(new CreateAccountPage(account));
-        }
-
-        private async Task MenAddNewAccountClick()
-        {
-            await Navigation.PushAsync(new CreateAccountPage());
-        }
-
-        private async Task ItmOptionsClick(Account account)
-        {
-            string action = await Application.Current.MainPage.DisplayActionSheet("Cuenta " + account.Name, "Cancelar", null, "Editar", "Eliminar");
-            switch (action)
-            {
-                case "Editar":
-                    await MenEditAccountClick(account);
-                    break;
-                case "Eliminar":
-                    await MenDeleteAccountClick(account);
-                    break;
             }
         }
     }

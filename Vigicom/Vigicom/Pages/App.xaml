@@ -10,7 +10,7 @@
             <Color x:Key="mWhite">#FFFFFF</Color>
             <Style TargetType="Button">
                 <Setter Property="BackgroundColor"
-                        Value="{ StaticResource ColorPrimary }"></Setter>
+                        Value="{ StaticResource ColorPrimary }" />
                 <Setter Property="TextColor"
                         Value="{ StaticResource mWhite}" />
             </Style>
