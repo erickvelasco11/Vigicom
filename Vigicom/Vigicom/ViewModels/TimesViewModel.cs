@@ -29,6 +29,9 @@ namespace Vigicom.ViewModels
 
         private void EdtSirenTextChangedClick(string newValue)
         {
+            newValue = newValue.Replace("-", "");
+            newValue = newValue.Replace(".", "");
+            newValue = newValue.Replace(",", "");
             if (int.TryParse(newValue, out int intValue))
             {
                 if (intValue < 0)
@@ -45,16 +48,19 @@ namespace Vigicom.ViewModels
 
         private void EdtVoiceTextChangedClick(string newValue)
         {
+            newValue = newValue.Replace("-", "");
+            newValue = newValue.Replace(".", "");
+            newValue = newValue.Replace(",", "");
             if (int.TryParse(newValue, out int intValue))
             {
                 if (intValue < 0)
                 {
-                    SirenTime = 0;
+                    VoiceTime = 0;
                 }
 
-                if (intValue > 255)
+                if (intValue > 999)
                 {
-                    SirenTime = 255;
+                    VoiceTime = 255;
                 }
             }
         }

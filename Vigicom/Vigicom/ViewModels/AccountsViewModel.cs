@@ -51,16 +51,20 @@ namespace Vigicom.ViewModels
         private async Task ItmOptionsClick(Account account)
         {
             var popup = new AccountMenuPopup();
-            string action = (await Application.Current.MainPage.Navigation.ShowPopupAsync(popup)).ToString();
-            //string action = await Application.Current.MainPage.DisplayActionSheet("Cuenta " + account.Name, "Cancelar", null, "Editar", "Eliminar");
-            switch (action)
+            var response = await Application.Current.MainPage.Navigation.ShowPopupAsync(popup);
+            if (response != null)
             {
-                case "Editar":
-                    await MenEditAccountClick(account);
-                    break;
-                case "Eliminar":
-                    await MenDeleteAccountClick(account);
-                    break;
+                string action = response.ToString();
+                //string action = await Application.Current.MainPage.DisplayActionSheet("Cuenta " + account.Name, "Cancelar", null, "Editar", "Eliminar");
+                switch (action)
+                {
+                    case "Editar":
+                        await MenEditAccountClick(account);
+                        break;
+                    case "Eliminar":
+                        await MenDeleteAccountClick(account);
+                        break;
+                }
             }
         }
 
