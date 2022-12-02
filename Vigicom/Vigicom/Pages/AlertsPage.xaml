@@ -23,6 +23,8 @@
                        Grid.Row="0"
                        Placeholder="Número de alerta 1"
                        HorizontalOptions="FillAndExpand"
+                       Keyboard="Numeric"
+                       MaxLength="10"
                        Text="{Binding Number1}" />
                 <Picker Grid.Column="1"
                         Grid.Row="0"
@@ -46,6 +48,8 @@
                        Grid.Row="1"
                        Placeholder="Número de alerta 2"
                        HorizontalOptions="FillAndExpand"
+                       Keyboard="Numeric"
+                       MaxLength="10"
                        Text="{Binding Number2}" />
                 <Picker Grid.Column="1"
                         Grid.Row="1"
@@ -69,6 +73,8 @@
                        Grid.Row="2"
                        Placeholder="Número de alerta 3"
                        HorizontalOptions="FillAndExpand"
+                       Keyboard="Numeric"
+                       MaxLength="10"
                        Text="{Binding Number3}" />
                 <Picker Grid.Column="1"
                         Grid.Row="2"
@@ -92,6 +98,8 @@
                        Grid.Row="3"
                        Placeholder="Número de alerta 4"
                        HorizontalOptions="FillAndExpand"
+                       Keyboard="Numeric"
+                       MaxLength="10"
                        Text="{Binding Number4}" />
                 <Picker Grid.Column="1"
                         Grid.Row="3"
@@ -115,6 +123,8 @@
                        Grid.Row="4"
                        Placeholder="Número de alerta 5"
                        HorizontalOptions="FillAndExpand"
+                       Keyboard="Numeric"
+                       MaxLength="10"
                        Text="{Binding Number5}" />
                 <Picker Grid.Column="1"
                         Grid.Row="4"
@@ -138,6 +148,8 @@
                        Grid.Row="5"
                        Placeholder="Número de alerta 6"
                        HorizontalOptions="FillAndExpand"
+                       Keyboard="Numeric"
+                       MaxLength="10"
                        Text="{Binding Number6}" />
                 <Picker Grid.Column="1"
                         Grid.Row="5"
@@ -161,7 +173,9 @@
                        Grid.Row="6"
                        Placeholder="Número de alerta 7"
                        HorizontalOptions="FillAndExpand"
-                       Text="{Binding Number8}" />
+                       Keyboard="Numeric"
+                       MaxLength="10"
+                       Text="{Binding Number7}" />
                 <Picker Grid.Column="1"
                         Grid.Row="6"
                         Title="Selecciona"
@@ -184,6 +198,8 @@
                        Grid.Row="7"
                        Placeholder="Número de alerta 8"
                        HorizontalOptions="FillAndExpand"
+                       Keyboard="Numeric"
+                       MaxLength="10"
                        Text="{Binding Number8}" />
                 <Picker Grid.Column="1"
                         Grid.Row="7"
