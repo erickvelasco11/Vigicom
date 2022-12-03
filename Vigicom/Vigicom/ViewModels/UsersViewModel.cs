@@ -38,9 +38,9 @@ namespace Vigicom.ViewModels
                     Position = "0";
                 }
 
-                if (intValue > 255)
+                if (intValue > 500)
                 {
-                    Position = "255";
+                    Position = "500";
                 }
             }
         }

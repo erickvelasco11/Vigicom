@@ -53,7 +53,7 @@ namespace Vigicom.ViewModels
 
         private async void MenProgramationClick()
         {
-            await Navigation.PushAsync(new ProgrammingPage());
+            await Navigation.PushAsync(new PasswordPage());
         }
 
         private async void MenHistoricalClick()
