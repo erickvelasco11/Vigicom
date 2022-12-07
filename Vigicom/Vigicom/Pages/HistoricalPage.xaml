@@ -23,10 +23,10 @@
                 <DataTemplate>
                     <StackLayout xct:TouchEffect.NativeAnimation="True">
                         <StackLayout Padding="16">
-                            <Label Text="{Binding Description}"
+                            <Label Text="{Binding Name}"
                                    FontSize="20"
                                    FontAttributes="Bold" />
-                            <Label Text="{Binding Date}"
+                            <Label Text="{Binding Price}"
                                    FontSize="16" />
                         </StackLayout>
                         <BoxView HeightRequest="1"
