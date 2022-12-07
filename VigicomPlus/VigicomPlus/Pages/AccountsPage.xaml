@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ViewModels="clr-namespace:VigicomPlus.ViewModels"
+             xmlns:fab="clr-namespace:Refractored.FabControl;assembly=Refractored.FabControl"
+             x:Class="VigicomPlus.Pages.AccountsPage"
+             x:Name="MyAccountsPage"
+             Title="Cuentas">
+    <ContentPage.BindingContext>
+        <ViewModels:AccountsViewModel />
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            <ListView CachingStrategy="RecycleElement"
+                      ItemsSource="{Binding Accounts}"
+                      HasUnevenRows="True"
+                      SelectionMode="None"
+                      ItemTapped="ListView_ItemTapped">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <!--<ViewCell.ContextActions>
+                                <MenuItem Text="Eliminar"
+                                          IsDestructive="True"
+                                          Command="{Binding Source={x:Reference MyAccountsPage}, Path=BindingContext.MenDeleteAccountCommand}"
+                                          CommandParameter="{Binding .}" />
+                                <MenuItem Text="Editar"
+                                          Command="{Binding Source={x:Reference MyAccountsPage}, Path=BindingContext.MenEditAccountCommand}"
+                                          CommandParameter="{Binding .}" />
+                            </ViewCell.ContextActions>-->
+                            <Grid Padding="16">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+                                <Image Source="ic_accounts.png"
+                                       Margin="0,0,16,0"
+                                       Grid.Column="0"
+                                       Grid.Row="0"
+                                       Grid.RowSpan="2"/>
+                                <Label Text="{Binding Name}"
+                                       FontSize="26"
+                                       FontAttributes="Bold"
+                                       Grid.Column="1"
+                                       Grid.Row="0"/>
+                                <Label Text="{Binding SimNumber}"
+                                       FontSize="20"
+                                       Grid.Column="1"
+                                       Grid.Row="1" />
+                                <ImageButton Source="ic_action_more_vert.png"
+                                             BackgroundColor="Transparent"
+                                             Grid.Column="2"
+                                             Grid.Row="0"
+                                             Grid.RowSpan="2"
+                                             Command="{Binding Source={x:Reference MyAccountsPage}, Path=BindingContext.ItmOptionsCommand}"
+                                             CommandParameter="{Binding .}" />
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <fab:FloatingActionButtonView ImageName="ic_action_add.png"
+                                          ColorNormal="{StaticResource ColorPrimary}"
+                                          ColorPressed="{StaticResource ColorPrimaryDark}"
+                                          ColorRipple="{StaticResource ColorPrimaryDark}"
+                                          IsVisible="True"
+                                          AbsoluteLayout.LayoutFlags="PositionProportional"
+                                          AbsoluteLayout.LayoutBounds="1,1,AutoSize,AutoSize"
+                                          Command="{Binding MenAddNewAccountCommand}" />
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

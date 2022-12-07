@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Grid xmlns="http://xamarin.com/schemas/2014/forms"
+      xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+      xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+      xmlns:views="clr-namespace:VigicomPlus.Views"
+      x:Class="VigicomPlus.Views.AlertControlView"
+      Padding="16">
+    <Grid.BindingContext>
+        <views:AlertControlView />
+    </Grid.BindingContext>
+    <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="2*" />
+        <ColumnDefinition Width="*" />
+        <ColumnDefinition Width="Auto" />
+    </Grid.ColumnDefinitions>
+    <Entry Grid.Column="0"
+           Grid.Row="0"
+           Placeholder="{Binding Placeholder}"
+           HorizontalOptions="FillAndExpand"
+           Text="{Binding Number}" />
+    <Picker Grid.Column="1"
+            Grid.Row="0"
+            Title="Selecciona">
+        <Picker.Items>
+            <x:String>Texto</x:String>
+            <x:String>Llamada</x:String>
+        </Picker.Items>
+    </Picker>
+    <ImageButton Grid.Column="2"
+                 Grid.Row="0"
+                 Source="ic_action_send.png"
+                 Padding="16"
+                 BackgroundColor="Transparent"
+                 CornerRadius="16"
+                 xct:TouchEffect.NativeAnimation="True"
+                 xct:IconTintColorEffect.TintColor="Gray" />
+</Grid>
